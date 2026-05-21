@@ -1,205 +1,205 @@
 # roboharness Research Vectors
 
-> Layer 2 卡片：定义 `MiaoDX/roboharness` 该盯哪些方向、用哪些信源、什么节奏。
-> 配合 [`mithaq/templates/checkpoint.md`](../templates/checkpoint.md) 使用。
+> Layer 2 card: defines what `MiaoDX/roboharness` must track, which sources to use, and on what cadence.
+> Used together with [`mithaq/templates/checkpoint.md`](../templates/checkpoint.md).
 >
-> **首次铺设：** 2026-05-21
-> **下次自审：** 2026-08-21（每季度审一次卡片本身——vectors 也会过期）
+> **First written:** 2026-05-21
+> **Next self-audit:** 2026-08-21 (the card itself is audited quarterly — vectors cards also go stale)
 
-## 项目当前定位（一句话）
+## Current project positioning (one sentence)
 
 > "Approval/evidence harness for unattended robot code changes."
 >
-> 核心 wedge：`long unattended agent run → one proof pack → short human review`。
-> 主栈：MuJoCo + Meshcat + LeRobot + Unitree G1 + GR00T/SONIC + Pinocchio/Pink。
-> 关键术语自定义见 [`roboharness/CONTEXT.md`](https://github.com/MiaoDX/roboharness/blob/main/CONTEXT.md)。
+> Core wedge: `long unattended agent run → one proof pack → short human review`.
+> Primary stack: MuJoCo + Meshcat + LeRobot + Unitree G1 + GR00T/SONIC + Pinocchio/Pink.
+> Project-specific vocabulary: see [`roboharness/CONTEXT.md`](https://github.com/MiaoDX/roboharness/blob/main/CONTEXT.md).
 
-## 隐藏假设（vectors 的存在就是为了发现这些假设何时过期）
+## Hidden assumptions (the vectors exist to detect when these stop holding)
 
-以下是 roboharness 当前架构里**没被显式写出来**但实际在被押注的判断。如果某次 deep research 发现某个假设的支撑变弱，应立刻进入 §7 公开问题。
+The following are bets the project's current architecture is making **without writing them down explicitly**. If a deep-research pass produces evidence that the support for any of these is weakening, immediately log it as an item in §7 Open Questions.
 
-| # | 隐藏假设 | 对应的挑战 vector |
-|---|---------|------------------|
-| H1 | "同一个 coding agent 做视觉 review"是对的，独立 VLM judge 是反模式 | Vector 3（agent 视觉能力） |
-| H2 | MuJoCo 是对的主 substrate，Isaac Lab / Genesis / MolmoSpaces 是 watchlist | Vector 2（仿真生态） |
-| H3 | 合同优先的 Python authoring（`HarnessContract`）是对的，YAML/DSL/prompt-only 不是 | Vector 1（harness 上游） |
-| H4 | LeRobot 是对的数据格式，Open X-Embodiment 等不构成替代 | Vector 4（VLA / 数据） |
-| H5 | G1 + GR00T + SONIC 是对的人形 demo 栈，Figure/Helix/π₀ 不构成立即替代 | Vector 5（人形硬件） |
-| H6 | "人审在 agent run 结束时"是对的循环，连续 review / 无人审都不是 | Vector 1（harness 上游） |
-| H7 | 视觉 + 数值双通道、metric-first-with-visual-fallback 是对的策略 | Vector 1（harness 上游） |
+| # | Hidden assumption | Vector that challenges it |
+|---|------------------|--------------------------|
+| H1 | "The same coding agent should do visual review"; an independent VLM judge is the anti-pattern | Vector 3 (agent visual capabilities) |
+| H2 | MuJoCo is the right primary substrate; Isaac Lab / Genesis / MolmoSpaces are watchlist | Vector 2 (simulator ecosystem) |
+| H3 | Contract-first Python authoring (`HarnessContract`) is right; YAML / DSL / prompt-only are not | Vector 1 (harness upstream) |
+| H4 | LeRobot is the right data format; Open X-Embodiment and others do not constitute a replacement | Vector 4 (VLA / data) |
+| H5 | G1 + GR00T + SONIC is the right humanoid demo stack; Figure / Helix / π₀ do not constitute immediate replacements | Vector 5 (humanoid hardware) |
+| H6 | "Human review at the end of an agent run" is the right loop; continuous review and no-human-in-loop are not | Vector 1 (harness upstream) |
+| H7 | Visual-plus-numeric dual-channel, with metric-first and visual-fallback, is the right strategy | Vector 1 (harness upstream) |
 
-每期 checkpoint 应该回答：这一期有没有证据让上面任何一条假设需要被重新审视？
-
----
-
-## 调研方向
-
-### Vector 1：Harness Engineering 上游
-
-> 这是 roboharness 命名和定位的源头。这条线如果发生范式转变，整个项目的设计哲学需要重审。
-
-**要盯的 entity**：
-
-- **核心人物 / 项目**：Mitchell Hashimoto（mitchellh.com，"Engineer the Harness"）、Anthropic engineering blog（"Effective harnesses for long-running agents"、"Harness design for long-running application development"、Managed Agents 系列）、OpenAI（Symphony、"Harness engineering: leveraging Codex"、"Unlocking the Codex harness"、"Unrolling the Codex agent loop"）、Cursor（"Towards self-driving codebases"、"Scaling long-running autonomous coding"）、Martin Fowler（"Harness Engineering" essay）
-- **二线但活跃**：HumanLayer（"Skill Issue: Harness Engineering for Coding Agents"、五杠杆）、LangChain blog（"The Anatomy of an Agent Harness"、"Improving Deep Agents with Harness Engineering"）、Epsilla、InfoQ 关于 harness 的报道
-- **新兴值得追踪**：每月扫一遍 arXiv 是否出现 "agent harness" / "approval testing for LLM agents" 类的论文
-
-**关键变化预期**：
-
-- 12 个月内可能出现的：agent harness 的 spec 标准化、"approval pack" 这个术语本身的传播或被替换、unattended 长跑的 SLA 模式
-- 已经在发生：harness 组件随模型代际淘汰（Anthropic 在 Opus 4.5→4.6→4.7 之间逐一移除旧组件）
-
-**对 roboharness 的相关性**：H3、H6、H7 三条假设全部来自这条线。任何"approval"语义的变化都直接影响 roboharness 的 proof pack 设计。
+Every checkpoint must answer: did this period produce evidence that any of the above assumptions needs to be reconsidered?
 
 ---
 
-### Vector 2：机器人仿真 Substrate 生态
+## Research vectors
 
-> roboharness 坐在 MuJoCo 之上。substrate 层换代会直接影响项目的工作面。
+### Vector 1: Harness engineering upstream
 
-**要盯的 entity**：
+> Source of the project's name and positioning. If this line undergoes a paradigm shift, the project's entire design philosophy needs revisiting.
 
-- **主流**：MuJoCo（DeepMind/Google，最新 release）、mujoco_playground（Google DeepMind 2025）、mjlab/mujocolab（MuJoCo-Warp 后端的 Isaac Lab API 复刻）、Isaac Sim、Isaac Lab（NVIDIA，注意 2.x→3.x 的重构）、Meshcat
-- **新晋 / 挑战者**：MolmoSpaces（Allen AI，2026-02 发布，23 万+ 场景、4200 万抓取，USD 出口）、Genesis（2024-12，号称比 MuJoCo 快 80×）、ManiSkill3（HF 团队）、Habitat 3.0（Meta + PARTNR）
-- **特殊角色**：mujoco_mpc、DiffPhys / 可微分仿真（如 Brax、warp-sim）
+**Entities to track**:
 
-**关键变化预期**：
+- **Core people / projects**: Mitchell Hashimoto (mitchellh.com, "Engineer the Harness"); Anthropic engineering blog ("Effective harnesses for long-running agents", "Harness design for long-running application development", the Managed Agents series); OpenAI (Symphony, "Harness engineering: leveraging Codex", "Unlocking the Codex harness", "Unrolling the Codex agent loop"); Cursor ("Towards self-driving codebases", "Scaling long-running autonomous coding"); Martin Fowler ("Harness Engineering" essay)
+- **Active second-tier**: HumanLayer ("Skill Issue: Harness Engineering for Coding Agents", the five levers); LangChain blog ("The Anatomy of an Agent Harness", "Improving Deep Agents with Harness Engineering"); Epsilla; InfoQ coverage of harness topics
+- **Emerging, worth following**: monthly arXiv scan for new "agent harness" / "approval testing for LLM agents" papers
 
-- Genesis 在 2025-2026 期间会决定是真长出生态还是只是一次性发布
-- MolmoSpaces 的多 agent 支持成熟度（目前是单 agent）
-- Isaac Lab 3.x 重构会否打破现有集成
-- MuJoCo 加 GPU 后端（mujoco-warp）改变性能格局
+**Expected changes**:
 
-**对 roboharness 的相关性**：H2 假设的支撑。MuJoCo 失势或者某个 substrate 出现"原生 approval pack"能力，roboharness 主栈需要重审。
+- Within 12 months may emerge: standardization of agent-harness specs, the term "approval pack" spreading or being supplanted, SLA models for unattended long runs
+- Already happening: harness components getting retired as models advance (Anthropic retired old components moving from Opus 4.5 → 4.6 → 4.7)
 
----
-
-### Vector 3：Agent 视觉 Review 能力
-
-> roboharness 押注"coding agent 自己看图就够了，不需要独立 VLM judge"。这条假设依赖于多模态模型的图像理解长上下文能力持续提升。
-
-**要盯的 entity**：
-
-- **主流多模态模型版本**：Claude（最新版本的视觉能力、长上下文图像推理能力、多张图同时推理）、GPT 系列（含 vision 改进）、Gemini 系列（特别是 Pro 的视觉推理）、Qwen-VL 系列、Kimi 视觉能力
-- **VLM-as-judge 学术线**：arXiv 上关于"VLM judge"、"visual evaluation"、"image reasoning benchmark" 的新论文（特别是机器人场景）
-- **专门的视觉评估工具**：Anthropic 的 vision agent 能力 release notes、OpenAI o-series 视觉推理、Reka、xAI Grok vision
-- **反向证据**：是否有研究表明 same-agent visual review 系统性地不如独立 VLM judge
-
-**关键变化预期**：
-
-- 长上下文图像推理（一次看 10-20 张图）的能力曲线
-- 机器人视觉推理专门 benchmark 的出现
-- "visual chain-of-thought" 这条线的成熟度
-
-**对 roboharness 的相关性**：H1 假设的支撑。如果某次新模型发布显著缩小或扩大 same-agent 与独立 judge 的差距，H1 需要更新。
+**Relevance to roboharness**: H3, H6, H7 — all three assumptions come from this line. Any change to the semantics of "approval" directly affects roboharness's proof-pack design.
 
 ---
 
-### Vector 4：VLA / 机器人策略模型生态
+### Vector 2: Robot simulator substrate ecosystem
 
-> 这些是 roboharness 评估的对象。新 VLA 改变需要被 review 的东西。
+> roboharness sits on top of MuJoCo. A substrate-layer change directly affects the project's working surface.
 
-**要盯的 entity**：
+**Entities to track**:
 
-- **当前主流**：GR00T N1.7 / N2（NVIDIA，及 WholeBodyVLA、GR00T-WholeBodyControl）、Physical Intelligence π₀ / π₀.₅ / π₁（openpi）、SONIC（NVIDIA GEAR）、Helix（Figure，闭源但可观察）
-- **学术线**：OpenVLA + OpenVLA-OFT、CogACT、Cosmos Policy、dVLA、DIVA、FASTer、OmniSAT、XR-1、FLOWER、MEM（Physical Intelligence 2026-03，15 分钟厨房任务）
-- **数据 / 格式标准**：LeRobotDataset（v3.0 已发布，关注后续）、Open X-Embodiment、Bridge-V2、Droid
+- **Mainstream**: MuJoCo (DeepMind/Google, latest release); mujoco_playground (Google DeepMind 2025); mjlab/mujocolab (Isaac Lab API on a MuJoCo-Warp backend); Isaac Sim; Isaac Lab (NVIDIA, note the 2.x → 3.x restructuring); Meshcat
+- **Newcomers / challengers**: MolmoSpaces (Allen AI, released 2026-02; 230K+ scenes, 42M+ grasps, USD export); Genesis (released 2024-12, claiming 80× faster than MuJoCo); ManiSkill3 (HF team); Habitat 3.0 (Meta + PARTNR)
+- **Special cases**: mujoco_mpc; differentiable physics (Brax, warp-sim)
 
-**关键变化预期**：
+**Expected changes**:
 
-- 通用 humanoid VLA（双臂 + 全身）的开源版本（目前 G1 集成主要走 GR00T，π₀.₅ 是潜在替代）
-- 数据格式收敛到 LeRobotDataset 还是分裂
-- 新增需要 review 的维度（如双手协同、长程任务、自然语言指令）
+- Will Genesis grow a real ecosystem in 2025-2026 or remain a one-off release?
+- Multi-agent maturity in MolmoSpaces (currently single-agent only)
+- Whether the Isaac Lab 3.x restructure breaks existing integrations
+- MuJoCo gaining GPU backend (mujoco-warp) shifts the performance landscape
 
-**对 roboharness 的相关性**：H4 和 H5 假设的支撑。新 VLA 出来即所谓"评估目标"扩大，proof pack 设计可能需要新维度。
-
----
-
-### Vector 5：人形硬件 + WBC 栈
-
-> roboharness 具体集成 Unitree G1 + Pinocchio + Pink。硬件平台或 WBC 栈换代会影响集成工作。
-
-**要盯的 entity**：
-
-- **硬件**：Unitree G1 / H1（固件、新 SDK 版本）、Figure（02/03）、Boston Dynamics（Atlas 商业化进展）、Apptronik Apollo、Tesla Optimus、1X NEO、Sanctuary Phoenix、RBY1M、AGIbot G2
-- **WBC 栈**：Pinocchio、Pink（IK）、MuJoCo MPC、generative WBC 论文（如 GMP / Trajectory Diffusion for WBC）
-- **新兴**：humanoid-gym、unitree_mujoco、unitree_rl_gym
-
-**关键变化预期**：
-
-- Figure 或 Boston Dynamics 是否会发布开放 SDK（如发布即新集成目标候选）
-- 国内人形（智元、宇树）固件和 SDK 升级节奏
-- 单臂 → 双臂 → 全身这条复杂度阶梯上 roboharness 提供的 proof pack 是否需要重做
-
-**对 roboharness 的相关性**：H5 假设的支撑。这条线慢于 Vector 1-4，节奏可以放宽。
+**Relevance to roboharness**: H2's support. If MuJoCo loses ground, or if some substrate gains native "approval pack" capability, roboharness's primary stack needs reconsideration.
 
 ---
 
-### Vector 6：MCP / Agent 工具协议（含机器人 MCP server）
+### Vector 3: Agent visual review capabilities
 
-> roboharness 提供可选的 MCP tools。协议层变化会影响集成方式。
+> roboharness bets that "the coding agent's own eyes are enough; no separate VLM judge needed." This bet depends on multimodal models' image-reasoning and long-context capabilities continuing to improve.
 
-**要盯的 entity**：
+**Entities to track**:
 
-- **协议主线**：MCP（Anthropic / Linux Foundation AAIF）规范版本变更、A2A、ACP
-- **机器人 MCP server**：isaacsim-mcp、ros-mcp-server、mujoco-mcp（如存在）、LeRobot 是否出官方 MCP server
-- **agent skill 标准**：Anthropic Skills（agentskills.io，2026-03-14 发布的开放标准）、SKILL.md 在机器人领域的实例
-- **agent-to-robot 通用框架**：是否有项目尝试把 ROS / DDS 包成 MCP
+- **Mainstream multimodal model versions**: Claude (latest version's vision capability, long-context image reasoning, multi-image simultaneous reasoning); GPT series (including vision improvements); Gemini series (especially Pro's visual reasoning); Qwen-VL series; Kimi vision
+- **VLM-as-judge academic line**: new arXiv papers on "VLM judge", "visual evaluation", "image reasoning benchmark" (especially in robotics scenarios)
+- **Dedicated visual evaluation tools**: Anthropic vision-agent capability release notes; OpenAI o-series visual reasoning; Reka; xAI Grok vision
+- **Counter-evidence**: research showing same-agent visual review systematically underperforms an independent VLM judge
 
-**关键变化预期**：
+**Expected changes**:
 
-- MCP 2026 路线图的落地节奏（传输可扩展性、agent 通信、治理、企业就绪）
-- 机器人 MCP server 是否会出现"事实标准"
-- Anthropic Skills 在机器人场景的扩展
+- Long-context image-reasoning capability curve (one model handling 10-20 images in a single pass)
+- Emergence of robotics-specific visual reasoning benchmarks
+- Maturity of "visual chain-of-thought" as a line of work
 
-**对 roboharness 的相关性**：技术债 + 集成路径决策。节奏可以放宽。
-
----
-
-## 信源
-
-### 白名单（A 档，直接引用）
-
-- **官方一手**：anthropic.com/news、anthropic.com/research、openai.com/index、cursor.com/blog、deepmind.google/blog、nvidia.com/blog（特别是 robotics 板块）、huggingface.co/blog、allenai.org/blog、physicalintelligence.company/blog
-- **项目 repo 一手**：GitHub MiaoDX/roboharness 自己、google-deepmind/mujoco、google-deepmind/mujoco_playground、isaac-sim/IsaacLab、NVIDIA/Isaac-GR00T、Physical-Intelligence/openpi、huggingface/lerobot、allenai/molmospaces、Genesis-Embodied-AI/Genesis
-- **学术**：arXiv（cs.RO、cs.AI、cs.LG），重点订阅"robot policy"、"VLA"、"agent harness"、"approval testing"、"VLM judge" 关键词
-- **维护者博客**：mitchellh.com、Martin Fowler、Pete Warden、Anthropic engineering blog（独立子域）
-- **会议**：CoRL、ICRA、IROS、RSS（机器人）；NeurIPS、ICLR、ICML（学术 AI）；ICSE、FSE（软件工程，approval testing 来源）
-
-### 灰名单（B 档，需交叉验证）
-
-- TheNewStack、InfoQ、IEEE Spectrum、The Robot Report、ZDNet、VentureBeat、量子位、机器之心
-- HackerNews、Reddit r/MachineLearning、知乎技术回答（高赞且有引用）
-
-### 黑名单（D 档，主动忽略）
-
-- "2026 年最佳 X" 导购站（vellum.ai、qubittool.com、composio.dev、scriptbyai.com、aimagicx.com、skywork.ai 等典型 SEO 站）
-- 大量未引用一手信源的 medium/dev.to 营销文
-- AI 生成的 GitHub awesome-* 列表（仅作为"发现工具"使用，不作为引用源）
+**Relevance to roboharness**: H1's support. If a new model release significantly widens or narrows the gap between same-agent review and a dedicated judge, H1 needs to be updated.
 
 ---
 
-## 节奏
+### Vector 4: VLA / robot-policy model ecosystem
 
-- **常规 checkpoint**：每月一次，月底最后一周。一次 deep research session 覆盖全部 6 个 vector。Vector 1-4 每期都要写；Vector 5-6 如果当期没有显著变化可以注明"无更新"而不强求填充。
-- **卡片自审**：每季度（每 3 个 checkpoint 后）重审一次本 VECTORS 文件——entity 清单是否过期？隐藏假设是否需要增删？
+> These are the things roboharness evaluates. New VLAs change what needs reviewing.
+
+**Entities to track**:
+
+- **Current mainstream**: GR00T N1.7 / N2 (NVIDIA, plus WholeBodyVLA and GR00T-WholeBodyControl); Physical Intelligence π₀ / π₀.₅ / π₁ (openpi); SONIC (NVIDIA GEAR); Helix (Figure, closed-source but observable)
+- **Academic line**: OpenVLA + OpenVLA-OFT; CogACT; Cosmos Policy; dVLA; DIVA; FASTer; OmniSAT; XR-1; FLOWER; MEM (Physical Intelligence 2026-03, 15-minute kitchen tasks)
+- **Data / format standards**: LeRobotDataset (v3.0 released, watch for what comes next); Open X-Embodiment; Bridge-V2; Droid
+
+**Expected changes**:
+
+- Emergence of open-source general humanoid VLA (dual-arm + whole-body): currently G1 integration goes through GR00T, π₀.₅ is a potential replacement
+- Convergence on LeRobotDataset as the data format, or fragmentation
+- New review dimensions appearing (dual-hand coordination, long-horizon tasks, natural-language instructions)
+
+**Relevance to roboharness**: H4 and H5. As the set of "things to evaluate" expands with new VLAs, proof-pack design may need new dimensions.
 
 ---
 
-## 触发临时调研的条件（不等月底）
+### Vector 5: Humanoid hardware + WBC stack
 
-任一条触发即开一次 ad-hoc deep research：
+> roboharness specifically integrates Unitree G1 + Pinocchio + Pink. A change in the hardware platform or WBC stack affects integration work.
 
-- **模型代际跃迁**：Claude Opus 5、GPT-6 等旗舰模型发布；视觉能力显著进步的版本（影响 H1）
-- **VLA 重大发布**：GR00T N2、π₁、新开源 humanoid VLA（影响 H4、H5）
-- **Substrate 重大变化**：Genesis 1.0 release、Isaac Lab 3.x 完成、MolmoSpaces 增加多 agent 支持（影响 H2）
-- **关键依赖事件**：MuJoCo、LeRobot、GR00T、Pinocchio 任一发生 license 变更、停维护、严重安全事件
-- **同行 / 上游变化**：Anthropic、OpenAI、Cursor 在 harness engineering 方向出大型 release（如 Managed Agents GA、Symphony 2.0 等）（影响 H3、H6、H7）
-- **概念竞争**："approval pack" / "harness contract" 等术语被某个大厂用不同方式重新定义，或出现明确的反范式（如有 paper 证明 separate VLM judge 显著优于 same-agent review）
+**Entities to track**:
+
+- **Hardware**: Unitree G1 / H1 (firmware, new SDK versions); Figure (02 / 03); Boston Dynamics (Atlas commercialization); Apptronik Apollo; Tesla Optimus; 1X NEO; Sanctuary Phoenix; RBY1M; AGIbot G2
+- **WBC stack**: Pinocchio; Pink (IK); MuJoCo MPC; generative WBC papers (e.g., GMP / Trajectory Diffusion for WBC)
+- **Emerging**: humanoid-gym; unitree_mujoco; unitree_rl_gym
+
+**Expected changes**:
+
+- Will Figure or Boston Dynamics release an open SDK (which would make them an integration target)
+- Firmware and SDK release cadence for Chinese humanoids (智元, 宇树)
+- Whether proof-pack design needs reworking for the single-arm → dual-arm → whole-body complexity ladder
+
+**Relevance to roboharness**: H5. This line moves slower than Vectors 1-4; cadence can be relaxed.
 
 ---
 
-## 状态
+### Vector 6: MCP / agent tool protocols (including robotics MCP servers)
 
-- 2026-05-21：首次铺设。**尚未跑过任何 checkpoint**——这份卡片的可用性需要在第一次实际跑过之后才能验证。
-- 第一次跑 checkpoint 时重点验证两件事：(1) 6 个 vector 是否都能产出有用结果；(2) 隐藏假设是否真的能被 deep research 挑战到（如果连续两期都"全部假设未受挑战"，说明 vectors 设计有盲点，需要修订）。
+> roboharness provides optional MCP tools. Protocol-layer changes affect integration approach.
+
+**Entities to track**:
+
+- **Protocol mainline**: MCP (Anthropic / Linux Foundation AAIF) spec version changes; A2A; ACP
+- **Robotics MCP servers**: isaacsim-mcp; ros-mcp-server; mujoco-mcp (if it exists); whether LeRobot ships an official MCP server
+- **Agent skill standards**: Anthropic Skills (agentskills.io, the open standard published 2026-03-14); SKILL.md instances in robotics
+- **Agent-to-robot general frameworks**: whether any project tries to wrap ROS / DDS into MCP
+
+**Expected changes**:
+
+- The MCP 2026 roadmap's actual rollout (transport scalability, agent communication, governance, enterprise-readiness)
+- Whether a de facto "standard robotics MCP server" emerges
+- Anthropic Skills extending into robotics scenarios
+
+**Relevance to roboharness**: Technical debt + integration-path decisions. Cadence can be relaxed.
+
+---
+
+## Sources
+
+### Whitelist (A-tier, cite directly)
+
+- **Official primary**: anthropic.com/news, anthropic.com/research, openai.com/index, cursor.com/blog, deepmind.google/blog, nvidia.com/blog (especially the robotics section), huggingface.co/blog, allenai.org/blog, physicalintelligence.company/blog
+- **Project repos (primary)**: GitHub MiaoDX/roboharness itself; google-deepmind/mujoco; google-deepmind/mujoco_playground; isaac-sim/IsaacLab; NVIDIA/Isaac-GR00T; Physical-Intelligence/openpi; huggingface/lerobot; allenai/molmospaces; Genesis-Embodied-AI/Genesis
+- **Academic**: arXiv (cs.RO, cs.AI, cs.LG); priority subscribe keywords "robot policy", "VLA", "agent harness", "approval testing", "VLM judge"
+- **Maintainer blogs**: mitchellh.com; Martin Fowler; Pete Warden; Anthropic engineering blog (independent subdomain)
+- **Conferences**: CoRL, ICRA, IROS, RSS (robotics); NeurIPS, ICLR, ICML (academic AI); ICSE, FSE (software engineering, the source of approval testing concepts)
+
+### Grey list (B-tier, requires cross-verification)
+
+- TheNewStack, InfoQ, IEEE Spectrum, The Robot Report, ZDNet, VentureBeat, 量子位, 机器之心
+- HackerNews, Reddit r/MachineLearning, Zhihu highly-upvoted technical answers with citations
+
+### Blacklist (D-tier, actively ignore)
+
+- "Best X of 2026" buying guides (vellum.ai, qubittool.com, composio.dev, scriptbyai.com, aimagicx.com, skywork.ai, and similar SEO sites)
+- Marketing-flavored medium/dev.to posts without primary-source citations
+- AI-generated awesome-* lists on GitHub (use only as discovery tools, not as citation sources)
+
+---
+
+## Cadence
+
+- **Routine checkpoint**: monthly, in the last week of the month. A single deep-research session covers all 6 vectors. Vectors 1-4 must be written every period; Vectors 5-6 may be marked "no update" rather than padded if no significant change happened this period.
+- **Card self-audit**: quarterly (after every 3 checkpoints), audit this VECTORS file itself — is the entity list stale? do the hidden assumptions need to be added to or pruned?
+
+---
+
+## Triggers for off-schedule research (do not wait for the next cycle)
+
+Any one of these triggers an ad-hoc deep research pass:
+
+- **Model-generation jump**: a flagship model like Claude Opus 5 or GPT-6 is released; a version with significantly improved vision capabilities ships (affects H1)
+- **Major VLA release**: GR00T N2, π₁, a new open-source humanoid VLA (affects H4, H5)
+- **Substrate major change**: Genesis 1.0 release, Isaac Lab 3.x completion, MolmoSpaces adds multi-agent support (affects H2)
+- **Key-dependency event**: MuJoCo, LeRobot, GR00T, or Pinocchio undergoes a license change, end of maintenance, or serious security event
+- **Peer / upstream change**: Anthropic, OpenAI, or Cursor ships a major harness-engineering release (e.g., Managed Agents general availability, Symphony 2.0) (affects H3, H6, H7)
+- **Conceptual competition**: terms like "approval pack" / "harness contract" get redefined differently by a major vendor; or a paper appears demonstrating that a separate VLM judge significantly outperforms same-agent review (counter-evidence to H1)
+
+---
+
+## Status
+
+- 2026-05-21: first written. **No checkpoints have been run yet** — this card's usability has not been validated.
+- When running the first checkpoint, verify two things: (1) all 6 vectors produce useful output; (2) the hidden assumptions actually get challenged by deep research (if two consecutive checkpoints leave "all assumptions unchallenged," the vectors design has blind spots and needs revision).

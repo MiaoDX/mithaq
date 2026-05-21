@@ -1,221 +1,226 @@
-# 命名这个 repo 的对话——为什么是 Mithaq
+> **Language**: Current · [中文（原始对话语言）](./2026-05-21-naming-mithaq.zh.md)
 
-> **编辑说明**
+# The conversation that named this repo — why Mithaq
+
+> **Editor's note**
 >
-> 这是 `mithaq` 仓库的**创世存档**。原对话是一次单一长 session 与 Claude Opus 4.7 进行（2026-05-21），围绕一个具体问题：把 `roboclaws` 的周期性 deep research 机制抽象成跨 repo 模板，需要一个 meta-repo 来承载，那么这个 repo 该叫什么。
+> This is the **genesis archive** of the `mithaq` repository. The original was a single long session with Claude Opus 4.7 (2026-05-21), conducted in Chinese, around one concrete question: can the periodic deep-research mechanism in `roboclaws` be abstracted into a cross-repo template, and if so, the meta-repo that holds the abstraction needs a name — what should it be?
 >
-> 本文是**编辑后的版本**——保留判断转折和关键引用，剪掉每个候选名字的细节铺陈（那些都在两份 deep research artifact 里）。原对话约 30 轮往返，本文呈现的是骨架。
+> This file is an **edited version** — preserving the decision turns and key quotes, dropping the per-candidate detail (which exists in two deep-research artifacts). The original session ran about 30 round-trips; what is shown here is the skeleton.
 >
-> 之所以这是 `dialogues/` 的第一份存档，因为它本身就是定义 `dialogues/` 该收什么的对话——三条收录标准它都满足。
+> This is the first entry in `dialogues/` because it is itself the conversation that defines what `dialogues/` should contain — all three inclusion criteria are met.
 
-## 元数据
+## Metadata
 
-- **日期**：2026-05-21
-- **模型**：Claude Opus 4.7（含 Anthropic deep research 工具两次调用）
-- **触发问题**：roboclaws 的周期性 deep research 机制能否抽象成通用模板，跨 repo 复用
-- **影响的 repo**：mithaq（本身）、未来所有 MiaoDX repo（通过 Layer 1 模板和 Layer 2 vectors 卡片间接影响）
-- **状态**：已落地——`mithaq` 仓库已创建，第一组 commit 已推送
+- **Date**: 2026-05-21
+- **Model**: Claude Opus 4.7 (with Anthropic deep research, two invocations)
+- **Original language**: Chinese (a faithful Chinese version is preserved at `2026-05-21-naming-mithaq.zh.md`)
+- **Triggering question**: can the periodic deep-research mechanism in `roboclaws` be abstracted into a cross-repo template
+- **Affected repos**: mithaq (itself); indirectly all future MiaoDX repos via the Layer 1 template and Layer 2 vectors cards
+- **Status**: landed — `mithaq` repository created, first commits pushed
 
-## 关键结论
+## Key conclusions
 
-1. **命名最终落定 `Mithaq`**（阿拉伯语，*مِيثَاق*，"庄严契约"）。理由：精确命中"我和顶级模型之间长期对话"这一关系的契约性质；命名空间在 GitHub / AI 创业公司 / 加密 token 三个维度均未被占；可挖掘的人文层次深（Quran 7:172 / Mithaq al-Alast / 与 `'ahd` 的区别 / 苏菲传统解读）。
+1. **The name landed on `Mithaq`** (Arabic, *مِيثَاق*, "solemn covenant"). Reasons: precise hit on the *covenant* character of "important long conversations with top models"; the namespace is clean across GitHub, AI startups, and crypto tokens; deep cultural excavation potential (Quran 7:172, *Mithaq al-Alast*, the distinction from `'ahd`, Sufi interpretations).
 
-2. **Earthseed**（Octavia Butler）是次优解，预留作未来英文姊妹仓库可能用名。**Primer**（Neal Stephenson《钻石时代》）功能映射最准但 `github.com/primer` 是 GitHub 自己的设计系统，无法使用——这个发现本身是值得记下来的认知。
+2. **`Earthseed`** (Octavia Butler) is the strongest runner-up; reserved as a possible name for a future English-facing sister repo. **`Primer`** (Neal Stephenson, *The Diamond Age*) had the most precise functional fit but `github.com/primer` is GitHub's own design system — the discovery that the perfect name is unusable is itself worth recording.
 
-3. **Layer 1 / Layer 2 / Layer 3 三层分离**是这次讨论的核心结构性产出：
-   - **Layer 1**：通用 checkpoint 元模板（结构 + 方法论），跨 repo 复用，住在 mithaq
-   - **Layer 2**：per-repo 调研方向卡片（具体盯哪些 entity、信源黑白名单、节奏），每 repo 一份，住在 mithaq
-   - **Layer 3**：具体某月的 checkpoint，住在各自 repo 的 `docs/research-checkpoints/`
-   "做一组通用 prompt 让任何 repo 都能跑"这个直觉**是错的**——它会让每个 repo 都拿到"问空气"的答案。
+3. **The Layer 1 / Layer 2 / Layer 3 three-tier separation** is the core structural product of this conversation:
+   - **Layer 1**: a universal checkpoint meta-template (structure + methodology), reusable across repos, lives in mithaq.
+   - **Layer 2**: per-repo research-direction cards (which entities to track, source whitelist/blacklist, cadence), one per repo, lives in mithaq.
+   - **Layer 3**: the actual periodic checkpoint for a specific month, lives in each repo's own `docs/research-checkpoints/`.
+   The instinct "write one set of generic prompts and any repo can run them" **is wrong** — it produces answers to no-content placeholders across the board.
 
-4. **确认也是一种调研产出**。两轮 deep research（第一轮多语言/宗教传统、第二轮科幻）跑下来，Mithaq 始终是最优解。第二轮没有改变结论，但**建立了 Mithaq 选择的稳健性**——知道"已经认真比较过 Primer / VALIS / Wallfacer / Earthseed / Fuligin / Ekumen 等几乎所有可能的候选"本身有价值。
+4. **Confirmation is also a research outcome.** Two rounds of deep research (the first across language/religious traditions, the second focused on science fiction) both pointed to Mithaq. The second round did not change the conclusion, but **established the robustness of the choice** — having seriously compared Primer / VALIS / Wallfacer / Earthseed / Fuligin / Ekumen and most alternatives has independent value.
 
-## 可抽象的结构
+## Abstractable structures
 
-这次对话浮现了几个可在其他场景复用的方法：
+This conversation surfaced several methods that apply beyond naming:
 
-### 1. 三层抽象：通用元结构 / per-instance 卡片 / 具体实例
+### 1. Three-tier abstraction: universal meta-structure / per-instance card / concrete instance
 
-这不是命名问题独有的。任何"想把一个项目的成功机制抽象给其他项目用"的场景都会遇到同一个分层问题。直接把成功项目的全套做法当通用模板会失败，因为：
+Not unique to naming. Any situation where "I want to abstract one project's successful mechanism for use by other projects" hits the same layering problem. Taking the full set of practices from a successful project and treating them as a universal template fails, because:
 
-- 表面看是"流程"，深处是"entity 清单 + 节奏 + 信源判断"，后者必须 per-instance。
-- 强行通用化的代价是**每个使用者都得做翻译**——而翻译这一步就是 per-instance 卡片该做的事，省不掉。
+- What looks like a "process" is, at a deeper level, an "entity list + cadence + source judgment" — the latter has to be per-instance.
+- The cost of forced universalization is that **every user has to translate** — and that translation step is what the per-instance card should be doing. It cannot be skipped.
 
-**判断什么属于哪一层的方法**：问自己"换一个项目，这个东西的具体内容会不会大改"。会大改的就是 Layer 2。
+**How to decide which layer something belongs to**: ask "if I swapped to a different project, would the specific content change a lot?" If yes, it belongs in Layer 2.
 
-### 2. 名字的"挖掘深度"作为评估维度
+### 2. "Excavation depth" as a name-evaluation criterion
 
-短期看好听易记的名字，长期看的是能不能撑起多次反复使用而不空洞。判断一个名字的挖掘深度：
+Short-term, a name is judged on memorability. Long-term, it is judged on whether it can sustain repeated use without becoming hollow. To assess excavation depth:
 
-- 能挖几层？（字面 / 神话 / 数学 / 文学 / 现代共鸣）
-- 每一层是否独立成立？（即：跟读者讲第一层时，不需要把其他层都铺出来）
-- 三年后还有没有新内容可挖？
+- How many layers can be drawn out? (literal / mythic / mathematical / literary / modern resonance)
+- Is each layer self-contained? (i.e., when discussing one layer with the reader, can it stand alone without unpacking the others)
+- Three years from now, will there still be new material to mine?
 
-Memex 一挖到底就是 Bush 1945 那一篇，挖完就到底。Mithaq 可以挖至少四五次而不重样（Quran 7:172 / al-Alast / `'ahd` 与 `mithaq` 的区分 / 苏菲传统的内在化解读 / 与西奈山立约的比较 / 现代 AI 对齐讨论中的契约论…）。
+Memex dug all the way down lands on Bush 1945 — and that's the bottom. Mithaq can be excavated at least four or five times without repetition (Quran 7:172 / al-Alast / the `'ahd`-`mithaq` distinction / Sufi internalization / comparison with the Sinai covenant / contractarian framings in modern AI alignment discussion…).
 
-### 3. "已经被 AI 圈占了什么"作为生态密度的指标
+### 3. "What has already been claimed by AI" as a measure of ecosystem density
 
-2026 年 5 月做命名调研，最直接的发现不是"哪些名字可用"，而是**哪些名字已经被占了**：
+Running a naming search in May 2026, the most striking finding was not "which names are available" but **which names have already been claimed**:
 
-- Primer → GitHub 自己（设计系统）+ Primer.ai（国防 AI）
-- VALIS → VALIS Systems（"AI 输出验证层"创业公司）
-- Wallfacer / 面壁 → 面壁智能 / ModelBest（MiniCPM 那家）+ wallfacer.ai
-- Sophon / 智子 → Sophon Network L2（Binance Labs 投，$70M+）
-- Musubi → Musubi Labs（VC backed，AI 内容审核）
-- Telos → Daniel Miessler 的 LLM context framework 等多个 AI 产品
-- Sutra → TWO AI 的多语言 LLM
+- Primer → GitHub itself (the design system) + Primer.ai (defense AI)
+- VALIS → VALIS Systems (an "AI output verification layer" startup)
+- Wallfacer / 面壁 → ModelBest / 面壁智能 (MiniCPM's maintainer) + wallfacer.ai
+- Sophon / 智子 → Sophon Network L2 (Binance Labs backed, $70M+)
+- Musubi → Musubi Labs (VC-backed AI content moderation)
+- Telos → Daniel Miessler's LLM context framework, plus several other AI products
+- Sutra → TWO AI's multilingual LLM
 
-这是一份**2026 年中文/英文 AI 命名空间被吞噬的快照**。这个清单本身就有独立的归档价值——它告诉未来的人："这一年所有美好的科幻/神话词都被矿走了。"
+This is, in itself, **a 2026 snapshot of the Chinese-and-English AI naming space being consumed**. The list has independent archival value — it tells future readers: "this year, every beautiful sci-fi or mythological word got mined out."
 
-### 4. 当 deep research 给的答案让人犹豫时，再跑一轮聚焦的
+### 4. When deep research produces an uncertain answer, run a focused follow-up round
 
-第一轮 deep research 把科幻条目化处理得太浅（只覆盖了六七个 Le Guin / Asimov / Lem 的概念），用户察觉到了。第二轮专门只针对科幻挖了 28 个候选，发现**完美的候选几乎全被 AI 圈占了**，反而**强化了对 Mithaq 的信心**——这是第一轮做不到的。
+The first deep-research round handled science fiction shallowly (covering only six or seven Le Guin / Asimov / Lem concepts). The user noticed. The second round was scoped narrowly to SF and produced 28 candidates, the discovery being that **the perfect candidates were almost all already claimed by AI companies** — which *strengthened* confidence in Mithaq, something the first round could not have produced alone.
 
-教训：第一轮 deep research 不满意时，**不要在结论上让步**，而是开一轮聚焦的补充。聚焦的成本远低于做错决定的成本。
+Lesson: when the first deep-research round leaves you uncertain, **do not concede on the conclusion** — open a focused supplementary round. The cost of focus is far lower than the cost of a wrong decision.
 
-## 对话节录
+## Excerpted dialogue
 
-### 起点：把 roboclaws 的机制抽象成通用模板？
+> Quotes from the user are translated from Chinese; direct Chinese versions are in the `.zh.md` sibling.
 
-用户描述了 `roboclaws/docs/research-checkpoints/2026-04.md` 这个机制——一份 1221 行的月度生态盘点文档，附带详细的更新流程、信源四档分级、触发临时调研的条件——希望抽象成所有 repo 通用的一组 prompt。
+### Starting point: abstract roboclaws' mechanism into a universal template?
 
-我的第一反应是先泼冷水：
+The user described `roboclaws/docs/research-checkpoints/2026-04.md` — a 1221-line monthly ecosystem snapshot with a detailed update procedure, a four-tier source quality system, and triggers for off-schedule research — and asked whether it could be abstracted into a set of prompts reusable across all repos.
 
-> 直接做"一组通用 prompt"有三个风险：
+My first response was to push back:
+
+> Building "a single set of universal prompts" runs three risks:
 >
-> 1. 调研方向通用化之后会变成"问空气"。把"OpenClaw 严格家族增量"改写成"项目核心依赖增量"，prompt 通用了但 deep research agent 会问回来"你的核心依赖具体是哪些？"——等于没问。
+> 1. Universalized research directions become "asking the air." Rewriting "OpenClaw strict-family increments" as "project core-dependency increments" makes the prompt universal but the deep-research agent will turn around and ask "what are your core dependencies, specifically?" — which is asking nothing.
 >
-> 2. 每个 repo 的"相邻视角"结构性不同，不是表面差异。roboharness 的相邻视角是 MuJoCo/Isaac Lab/LeRobot；verse-driven 是 Claude Code Skills 生态/经典文本数字化；LIP 是站点生成器/PKM 工具——这些差异没法揉进同一组 prompt。
+> 2. The "adjacent perspectives" for each repo are structurally different, not superficially so. roboharness's adjacent perspectives are MuJoCo / Isaac Lab / LeRobot; verse-driven's are Claude Code Skills ecosystem / classical-text digitization; LIP's are site generators / PKM tools — these differences cannot be folded into a single set of prompts.
 >
-> 3. "每月一次"对小项目过重。docfit 类工具可能两三个月才有一次值得记录的变化。
+> 3. "Monthly" is too heavy for small projects. A docfit-class tool might have only one notable change every two or three months. Forcing a monthly cadence produces empty ceremony.
 
-提出三层方案：Layer 1 通用元模板 / Layer 2 per-repo vectors 卡片 / Layer 3 具体某期 checkpoint。
+I proposed the three-layer scheme: Layer 1 universal meta-template / Layer 2 per-repo vectors cards / Layer 3 the actual monthly checkpoint.
 
-用户："呃，我觉得这个建议没有太大问题。" 然后转向了一个出乎意料的问题——**这个 meta-repo 该叫什么**。
+The user said "Hm, the suggestion doesn't seem to have major issues." Then turned to an unexpected question — **what should this meta-repo be called**.
 
-### 第一组候选：契约 / 长期依赖
+### First batch of candidates: covenant / long-term dependency
 
-用户特意提到一个 framing：
+The user framed the question with a specific angle:
 
-> 我基本上所有建议都是和你们不管是克劳德还是 GPT 来聊，也许这个名字就包含你这里，包含我们的契约，我们的长期依赖关系等等。
+> Basically every suggestion I take comes from talking with you — Claude or GPT. Maybe the name should contain that — our compact, our long-term relationship of mutual dependence.
 
-这把命名问题从"给一个 meta repo 起名"提升到了"命名一段关系"。
+That raised the naming question from "name a meta-repo" to "name a relationship."
 
-我给了几个视角下的候选：
+I offered candidates across several frames:
 
-- 契约 / 长期依赖：**compact**、accord、covenant、pact
-- 长期记忆 / 档案：**ledger**、codex、atlas
-- 延续 harness 隐喻：yoke、reins、tether
-- 沿 MiaoDX 命名风格：coharness、**LLMpact**、handshake
+- Covenant / long-term dependency: **compact**, accord, covenant, pact
+- Long-term memory / archive: **ledger**, codex, atlas
+- Continuing the harness metaphor: yoke, reins, tether
+- Aligned with MiaoDX naming style: coharness, **LLMpact**, handshake
 
-我推荐 compact——"紧凑" + "契约" 双关，跟其他 MiaoDX repo 命名节奏一致。
+I recommended **compact** — the "compactness + covenant" pun, fitting the existing MiaoDX naming rhythm.
 
-### 转向：科幻、宗教、道德经
+### Pivot: sci-fi, religion, Daodejing
 
-用户："找一些这种科幻电影里面的词，或者是《圣经》、《古兰经》里面的，或者说道教经典里面的，道德经里面的"
+The user: "Find some terms from sci-fi movies, or the Bible, or the Quran, or Daoist classics, or the Daodejing."
 
-这是关键的拓宽。我给了一组：
+This was the key widening. I offered a batch:
 
-- 科幻：**Ansible**（Le Guin）、Sophon（三体）、**Memex**（Bush）、Mentat（Dune）
-- 圣经/古兰经：**Logos**、Aleph、Ark
-- 道德经：朴（Pu）、玄（Xuan）
+- Sci-fi: **Ansible** (Le Guin), Sophon (Three-Body), **Memex** (Bush), Mentat (Dune)
+- Bible / Quran: **Logos**, Aleph, Ark
+- Daodejing: 朴 (Pu), 玄 (Xuan)
 
-排序首推 Logos——它**同时**是基督教的"道"、希腊哲学的"言/理性"、以及《道德经》"道"的标准译名，一个词通三家传统。但它在 tech 圈太常用。
+Recommended Logos first — it is **simultaneously** the Christian "Word", the Greek "logos" of philosophy, and the standard Chinese translation of "道" in the Daodejing — one word spanning three traditions. But too common in tech use.
 
-### 收窄到 memex / aleph
+### Narrowing to memex / aleph
 
-用户："memex / aleph，多介绍一下这两个词吧。"
+User: "memex / aleph — say more about these two words."
 
-这一轮我做了两个词的深度对比：
+This round I did a deep comparison of the two:
 
-- **Memex**：Bush 1945《As We May Think》。Memory extender，外置记忆装置 + associative trails 概念，是 hypertext / web 的思想源头。
-- **Aleph**：三层叠加——希伯来字母 א（无限源头）+ Cantor ℵ（无穷集合的级别符号）+ Borges 1945《El Aleph》（一个直径两三厘米的点，凝视它能看见宇宙中的一切）。
+- **Memex**: Bush 1945, *As We May Think*. Memory extender, external memory + associative trails — the conceptual ancestor of hypertext and the web.
+- **Aleph**: a three-layer compound — Hebrew letter א (infinite source) + Cantor ℵ (the symbol for ordering levels of infinite sets) + Borges 1945, *El Aleph* (a point two or three centimeters across through which one can see everything in the universe).
 
-我推荐 Aleph，理由是**隐喻精度更高**（Memex 隐喻对应 checkpoint 机制本身，Aleph 隐喻对应 Layer 1→Layer 2→Layer 3 这个分层抽象本身），**挖掘密度更深**（Memex 一挖到底就是 Bush 那篇文章；Aleph 可以挖三次都不重样），**跟 verse-driven 形成精神延续**（让计算机接触人文密度这条线）。
+I recommended Aleph: **the metaphor is more precise** (Memex corresponds to the checkpoint mechanism itself; Aleph corresponds to the Layer 1 → Layer 2 → Layer 3 layered abstraction itself); **the excavation density is deeper** (Memex bottoms out at Bush's paper; Aleph can be excavated three times without repetition); **continuity with verse-driven** (the line of "putting computers in contact with humanistic density").
 
-### 拓宽再拓宽：开 deep research
+### Widening again: deep research opens
 
-用户："既然提到了希伯来语，那其他的语言呢？我觉得可以搜索面再大一些。我给你开了深度搜索，你从不同视角来再搜搜看吧。感觉这个名字还是很重要的。"
+User: "Now that we've mentioned Hebrew — what about other languages? I'd like to widen the search. I'm enabling deep research. Take a look from different angles. This name feels really important."
 
-并补充关键的定位：
+And a clarification:
 
-> 这是一个 Meta Repo 来记录我和这些 top model 的最重要的对话，用它们来指引我的所有的项目的开展。
+> This is a Meta Repo that records the most important conversations I have with these top models, and uses them to guide all my projects.
 
-这句话把命名重心从"meta-template 的载体"挪到了"长期对话的存档 + 项目指引"。两条线索叠加：**契约关系** + **长期对话档案** + **指引未来项目**。
+That sentence shifted the naming center of gravity from "container for a meta-template" to "archive of long-running conversations + direction-setter for projects." Two threads stacked: **covenant relationship** + **long-conversation archive** + **direction for future projects**.
 
-第一轮 deep research 覆盖了希伯来 / 阿拉伯 / 梵语 / 古希腊 / 拉丁 / 古汉语 / 日语 / 古挪威 / 埃及 / 苏美尔等多个语言传统。返回的结果出乎意料：
+The first deep-research round covered Hebrew, Arabic, Sanskrit, classical Greek, Latin, classical Chinese, Japanese, Old Norse, Egyptian, Sumerian, and more. The results were unexpected:
 
-- **Aleph 没有想象中干净**：`Aleph-Alpha`（德国 30-repo 主权 AI 公司，明确做 LLM Intelligence Layer SDK）+ `Aleph Zero`（隐私 L1 区块链）已经分占名空。
-- **多个看似完美的名字已被 AI 公司占据**：Sutra（TWO AI 多语言 LLM）、Yuanqi 元气（腾讯 agent 平台）、Musubi（VC 投的 AI 内容审核）、Telos（Daniel Miessler 的 LLM context framework）、Ansible（Red Hat）。
-- **几个真正干净的候选浮现**：Mithaq（阿拉伯，"原初契约"）、Bijaksara（梵语，"种子-字"）、Foedus（拉丁，"契约"，"federal"的词源）、Yesod（希伯来，"基础"，Kabbalah 的第九 sefirah）、Ma'at（埃及，"真理/秩序"）。
+- **Aleph is not as clean as it looks**: `Aleph-Alpha` (the German 30-repo sovereign AI company, with an explicit LLM Intelligence Layer SDK) + `Aleph Zero` (the privacy L1 blockchain) have split the namespace.
+- **Several seemingly perfect names were already claimed by AI companies**: Sutra (TWO AI's multilingual LLM), Yuanqi 元气 (Tencent's agent platform), Musubi (VC-backed AI content moderation), Telos (Daniel Miessler's LLM context framework), Ansible (Red Hat).
+- **A few genuinely clean candidates surfaced**: Mithaq (Arabic, "primordial covenant"), Bijaksara (Sanskrit, "seed-syllable"), Foedus (Latin, "covenant" — the etymological root of "federal"), Yesod (Hebrew, "foundation," the ninth sefirah of the Kabbalah), Ma'at (Egyptian, "truth/order").
 
-我推荐 **Mithaq**。理由按重要性排：
+I recommended **Mithaq**. The reasons, ranked:
 
-> 1. 它精确命中你那句话的核心。"我和这些 top model 之间最重要的对话"——这是一种**契约关系**。Mithaq 在阿拉伯语里就是"庄严契约"，而且专指**先于一切存在的那个原始契约**（Quran 7:172 的 Mithaq al-Alast）。
+> 1. It precisely hits the core of your phrasing. "My most important conversations with these top models" — that is a **covenant relationship**. Mithaq in Arabic is "solemn covenant," and specifically refers to **the primordial covenant before all existence** (Quran 7:172, *Mithaq al-Alast*).
 >
-> 2. 命名空间真的干净。只有一家沙特家族办公室叫 Mithaq Capital，跟开发者世界零接触。
+> 2. The namespace is genuinely clean. Only one Saudi family office called Mithaq Capital, with zero developer-world contact.
 >
-> 3. 挖掘深度极深。你之前担心 Memex 挖到底就到 Bush 1945——Mithaq 不会，至少能挖出四五篇不重样的文章。
+> 3. Excavation depth is deep. Your earlier worry about Memex bottoming out at Bush 1945 — Mithaq doesn't; there are at least four or five distinct essays inside it.
 >
-> 4. 跟你已有命名风格不冲突。verse-driven、roboharness、LIP、docfit——你的命名审美里有外来词的接受度。
+> 4. Doesn't conflict with your existing naming style. verse-driven, roboharness, LIP, docfit — your naming aesthetic accepts foreign words.
 
-### 用户察觉到了缺漏
+### The user caught a gap
 
-用户："上面 Deep Research 进行科幻电影的 Research 了吗"
+User: "Did the deep research above actually research sci-fi movies?"
 
-——这是这次对话里非常关键的一刻。**用户对 Claude 的产出做了独立审查**，发现第一轮科幻部分只覆盖了六七个名字，敷衍带过。
+— a critical moment in this conversation. **The user performed independent review on Claude's output**, noticed that the first round had handled sci-fi shallowly with six or seven names breezed through.
 
-我承认了：原本 prompt 里写了让覆盖更广，但 deep research 把重心全压到了语言学/宗教传统上，科幻这条线没认真挖。列了一份没覆盖的清单（Le Guin 其他概念、Stephenson 全系、Lem、Egan、Banks Culture、Cixin Liu 全套、Borges、Calvino、Ted Chiang、PKD…）。
+I conceded: the original prompt had asked for broader coverage, but the deep research had concentrated on linguistic / religious traditions and underweighted the sci-fi line. I listed what hadn't been covered (Le Guin's other concepts, the full Stephenson catalogue, Lem, Egan, Banks's Culture, the full Cixin Liu set, Borges, Calvino, Ted Chiang, PKD…).
 
-用户："好的，开始吧"
+User: "OK, let's go."
 
-### 第二轮聚焦 SF deep research
+### Focused SF deep-research round 2
 
-只针对科幻挖了 28 个候选。结果颠覆了"科幻就有好名字"的天真假设：
+28 candidates from sci-fi specifically. The result overturned the naive assumption "sci-fi must contain a good name":
 
-- **Primer**（Stephenson《钻石时代》——一本指引一个人成长的 AI 书）：功能映射最准。但 `github.com/primer` 是 **GitHub 自己**的官方设计系统。无法使用。
-- **VALIS**（PKD）：VALIS Systems 是一家"AI 输出验证层"创业公司，正好踩在这个领域。
-- **面壁者 / Wallfacer**（刘慈欣）：面壁智能 / ModelBest 是国内主要 LLM 实验室（MiniCPM 那家）。中文 AI 圈这个名字基本焊死。
-- **智子 / Sophon**：Sophon Network（ZK Stack Validium L2，币安投，$70M+ 融资）。
-- **水滴 / Droplet**：水滴公司（NYSE: WDH）。
+- **Primer** (Stephenson, *The Diamond Age* — a book that grows a person up by adaptive instruction): the most precise functional fit. But `github.com/primer` is **GitHub's own** official design system. Unusable.
+- **VALIS** (PKD): VALIS Systems is "an AI output verification layer" startup — squarely in this problem space.
+- **Wallfacer / 面壁** (Cixin Liu): ModelBest / 面壁智能 is a major Chinese LLM lab (the MiniCPM maintainer). For the Chinese AI space, this name is permanently welded shut.
+- **Sophon / 智子**: Sophon Network (a ZK Stack Validium L2, Binance Labs invested, $70M+ funding).
+- **Droplet / 水滴**: WaterDrop Inc. (NYSE: WDH).
 
-**刘慈欣的概念几乎全军覆没**——中文科技圈从 2022 年开始把三体词汇当矿挖。
+**The Cixin Liu coinages were almost entirely defeated** — the Chinese tech scene has been mining the Three-Body lexicon since 2022.
 
-真正干净的科幻候选只剩三个：**Earthseed**（Butler）、**Fuligin**（Wolfe）、**Ekumen**（Le Guin，但 `github.com/Ekumen-OS` 是阿根廷一家机器人公司，跟 roboharness 命名空间冲突）。
+Only three genuinely clean sci-fi candidates remained: **Earthseed** (Butler), **Fuligin** (Wolfe), **Ekumen** (Le Guin, but `github.com/Ekumen-OS` is an Argentine robotics company — namespace collision with roboharness).
 
-### 确认 Mithaq
+### Mithaq confirmed
 
-第二轮没有改变结论，反而强化了它。我给出最终判断：
+The second round did not change the conclusion. It strengthened it. My final judgment:
 
-> Mithaq 仍然最优。三个干净的科幻候选都各有一个无法消除的弱点：Earthseed 的政治色彩 / Fuligin 的中文读法 / Ekumen 跟机器人 repo 的命名空间冲突。Mithaq 没有这种结构性弱点。
+> Mithaq still wins. The three clean SF candidates each have one structural weakness: Earthseed's political coloration / Fuligin's awkward Chinese transliteration / Ekumen's namespace collision with the robotics repo. Mithaq has no such structural weakness.
 >
-> 关键描述——"我和这些 top model 之间最重要的对话"——重心在"关系"不在"档案"。Earthseed / Fuligin 是档案概念，Ekumen 是联合体概念，Mithaq 是**契约**概念。契约才是那句话的内核。
+> Your key phrasing — "my most important conversations with these top models" — centers on *relationship*, not archive. Earthseed / Fuligin are archive concepts; Ekumen is a federation concept; Mithaq is a **covenant** concept. Covenant is the core of that phrasing.
 
-副产品建议：
+By-product suggestions:
 
-- 把 **Earthseed 留作未来的姊妹仓库名**——结构上跟 Butler 的设置呼应：Mithaq 是原契约，Earthseed 是契约衍生出的、可传播的箴言集。
-- **首篇文章可以直接写《为什么这个 repo 不叫 Primer》**——用对比来定义，张力比直接讲 Mithaq 是什么更强。
-- 第二轮文章素材库：Hylaean Theoric World（柏拉图理念世界与 LLM）/ 第二种妖（Lem 笔下的"按需相关性过滤器"——RAG 的前史）/ The Telling（Le Guin："讲述不是解释"）/ Severian 的小棕书（不可靠完美记忆）。
+- **Reserve Earthseed for a future sister-repo name** — the structure parallels Butler's setup: Mithaq is the primordial covenant; Earthseed would be a propagable distilled-verses derivative.
+- **The first essay should be titled "Why this repo is not named Primer"** — the contrast frames mithaq more sharply than a direct explanation could.
+- Future essay material: Hylaean Theoric World (the Platonic realm and LLMs) / the Demon of the Second Kind (Lem's "filter for relevance" — RAG's prehistory) / The Telling (Le Guin: "telling is not explaining") / Severian's brown book (unreliable perfect memory).
 
-### 落地
+### Landing
 
-用户："我建了 miaodx/mithaq 这个仓库，然后你按需对它提一个最初的一个或者多个 commit 吧"
+User: "I created MiaoDX/mithaq. Push an initial commit or two as needed."
 
-我推了两个 commit：
+I pushed two commits:
 
 - `8f6e1f3` — `docs: add README and CHARTER`
 - `e4894ff` — `feat: establish templates, vectors, and dialogues structure`
 
-包含 README、CHARTER（含为什么是 Mithaq、为什么不是其他候选、收录原则、与其他 repo 的关系）、Layer 1 通用 checkpoint 元模板（336 行）、`vectors/` 和 `dialogues/` 两个目录及其 README。
+Containing README, CHARTER (with the case for Mithaq, the case against alternatives, inclusion criteria, relationship to other repos), the Layer 1 universal checkpoint meta-template (336 lines), and `vectors/` and `dialogues/` directories with their respective READMEs.
 
-## 后续行动
+## Follow-up actions
 
-- ☐ 写《为什么这个 repo 不叫 Primer》公众号文章（首篇）
-- ☐ 在 `vectors/` 下铺第一份卡片——roboharness（用来验证 Layer 1 模板是否真的能跨场景）
-- ☐ 把 Layer 1 模板在某个真实 repo（roboharness 或 verse-driven）上跑一遍首期 checkpoint，验证可用性
-- ☐ 后续素材文章池：Aleph Alpha 的占用现象 / Liu Cixin 词汇被中文 AI 圈挖空的现象 / Primer 作为"完美但不可用的名字"
-- ☐ 监控：如果未来 12 个月内出现一家叫 Mithaq 的 AI 创业公司，重新评估是否需要换名
+- ☐ Write the WeChat essay "Why this repo is not named Primer" (first essay)
+- ☐ Lay down the first vectors card — `roboharness` (to validate whether the Layer 1 template actually works across scenarios)
+- ☐ Run the Layer 1 template against an actual repo (roboharness or verse-driven) for a first-period checkpoint, to validate usability
+- ☐ Follow-up essay candidates: the Aleph Alpha squat phenomenon / how Chinese AI mined out Cixin Liu's lexicon / Primer as "the perfect-but-unusable name"
+- ☐ Monitoring: if an AI startup named Mithaq appears in the next 12 months, re-evaluate
 
-## 修订
+## Revisions
 
-（暂无）
+(none yet)
