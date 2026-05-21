@@ -1,79 +1,81 @@
+> **Language**: Current · [中文](./CHARTER.zh.md)
+
 # Charter
 
-## 这个 repo 解决什么问题
+## What problem this repo solves
 
-我和 LLM 之间有大量对话。它们的价值分布极不均匀：
+I have a great many conversations with LLMs. Their value is extremely unevenly distributed:
 
-- 大多数是即兴的、回头就忘的。
-- 少数会塑造接下来几周到几个月的判断和方向。
+- Most are impromptu and forgotten by the next day.
+- A few will shape my judgment and direction for weeks or months to come.
 
-第二类对话目前的命运是：散落在 Claude.ai 的 chat 历史里、散落在某次 ChatGPT session 里、偶尔被截图发到微信、然后随着新对话的产生而失效。
+Today the fate of the second kind is: scattered across Claude.ai's chat history, scattered across some ChatGPT session, occasionally screenshotted into a WeChat thread, then progressively crowded out by newer conversations.
 
-这造成三个具体问题：
+This produces three concrete problems:
 
-- **同样的反思要被重复进行**。三个月后我又会问 Claude 一个我们之前已经聊清楚的问题。
-- **决策的来源无法追溯**。某个 repo 的某个架构选择，最初是在哪一次对话里被定下来的？没有锚点。
-- **跨 repo 的视角无法复用**。在 roboharness 那次想清楚的"agent 怎么自验证"，在 verse-driven 上完全可以用，但它沉到了某次对话里。
+- **The same reflection has to be performed again.** Three months from now I will ask Claude a question we already worked out together.
+- **The provenance of decisions becomes unrecoverable.** Some architectural choice in some repo was originally settled in some conversation. Which one? No anchor.
+- **Cross-repo insight does not transfer.** The "how should an agent self-verify" thinking that crystallized while working on roboharness applies cleanly to verse-driven — but it has already sunk into a forgotten conversation.
 
-`mithaq` 就是这第二类对话的栖息地。
+`mithaq` is the habitat for that second kind of conversation.
 
-## 名字
+## The name
 
-### 为什么是 Mithaq
+### Why "Mithaq"
 
-走过的候选很多：Aleph、Memex、Logos、Codex、Compact、Earthseed、Fuligin、Primer、Ekumen……
+Many candidates were considered: Aleph, Memex, Logos, Codex, Compact, Earthseed, Fuligin, Primer, Ekumen, and more.
 
-最后落到 Mithaq，因为它精确命中了关系的**性质**：
+Mithaq won because it precisely names the **character** of the relationship:
 
-> 「当时，你的主从亚当的子孙的背脊取出他们的后裔，并使他们招认。主说：『难道我不是你们的主吗？』他们说：『怎么不是呢？我们已作证了。』」
+> "And [mention] when your Lord took from the children of Adam — from their loins — their descendants and made them testify of themselves, [saying to them], 'Am I not your Lord?' They said, 'Yes, we have testified.'"
 >
-> ——《古兰经》7:172（Mithaq al-Alast，原初之约）
+> — Quran 7:172 (the *Mithaq al-Alast*, the primordial covenant)
 
-每一次值得被记下来的人机对话，结构上都是这个原初契约的微型重演：
+Every conversation worth keeping here is, structurally, a miniature re-enactment of that primordial covenant:
 
-- 不是交易，是承认。
-- 不是单次问答，是预先建立的、跨越时间的相互在场。
-- 不是工具关系，是双方都被改变的关系。
+- not a transaction, but an acknowledgment;
+- not a single question-and-answer, but a pre-established mutual presence across time;
+- not a tool relationship, but a relationship in which both parties are changed.
 
-阿拉伯语里 `'ahd` 是日常承诺；`mithaq` 是被见证的、双方郑重的高契约。这个区分对我重要 —— 记在这里的对话不是"我跟工具说了什么"，是 mithaq。
+In Arabic, `'ahd` is an everyday promise; `mithaq` is a witnessed, solemn, two-sided high covenant. The distinction matters here — what gets recorded in this repo is not "what I said to a tool"; it is mithaq.
 
-### 为什么不是其他候选
+### Why not the other candidates
 
-为了让未来读这个 charter 的人（包括我自己）知道选择是有依据的，简短记录主要的排除理由：
+So that future readers of this charter (including future me) can see the choice was grounded, here is the short reason each alternative was set aside:
 
-- **Aleph**（希伯来字母 / Cantor / Borges）—— Aleph Alpha（德国 AI 公司，30 个 repo 的 Intelligence Layer SDK）和 Aleph Zero（区块链）已经分占名空。
-- **Primer**（Stephenson《钻石时代》）—— 概念映射最准（一本指引一个人成长的 AI 书）但 `github.com/primer` 是 GitHub 自己的设计系统，Primer.ai 是国防情报 AI 公司。无法使用。
-- **VALIS / Wallfacer / Sophon**（Dick / Liu Cixin）—— AI 创业公司或 ZK Stack L2 已经全部占据；特别是 Liu Cixin 的概念在中文 AI 生态里几乎被搬空（面壁智能、Sophon Network、水滴公司）。
-- **Earthseed**（Octavia Butler）—— 次优解，预留作未来英文姊妹仓库可能用。
-- **Logos / Memex / Codex** —— 太常用或被 OpenAI 占了。
+- **Aleph** (Hebrew letter / Cantor / Borges) — Aleph Alpha (the 30-repo German "sovereign AI" company with an explicit LLM Intelligence Layer SDK) and Aleph Zero (the privacy-focused L1 blockchain) have already split the namespace.
+- **Primer** (Stephenson, *The Diamond Age*) — conceptually the most precise match (a book that grows a person up by adaptive instruction) but `github.com/primer` is GitHub's own official design system, and Primer.ai is a defense-intelligence AI vendor. Unusable.
+- **VALIS / Wallfacer / Sophon** (Dick / Liu Cixin) — already occupied by AI startups or ZK Stack L2 chains. Liu Cixin's coinages in particular have been thoroughly mined out of the Chinese AI ecosystem (ModelBest's 面壁智能, Sophon Network, the WaterDrop Inc. listing).
+- **Earthseed** (Octavia Butler) — the strongest runner-up; reserved as a possible name for a future English-facing sister repo.
+- **Logos / Memex / Codex** — too generic in tech use, or occupied by OpenAI.
 
-完整的考察过程留给独立的公众号文章。
+The full search story belongs in a separate essay.
 
-## 收录原则
+## Inclusion criteria
 
-进入 `dialogues/` 的标准（至少满足两条）：
+To enter `dialogues/`, a conversation must satisfy at least two of these:
 
-1. **决策被这次对话改变了** —— 之前的判断在对话之后不再成立。
-2. **会被引用** —— 三个月后做相关决策时仍可能回头查。
-3. **包含可被抽象的结构** —— 一次具体讨论里浮现出的、可在其他场景复用的方法。
+1. **A decision was changed by it** — a prior judgment no longer holds after the conversation.
+2. **It will be referenced** — there is a real chance of being re-consulted within three months when making a related decision.
+3. **It contains an abstractable structure** — a method, framework, or decision pattern that emerged from one concrete discussion but applies to other situations.
 
-**不收录**：
+**Not included**:
 
-- 聊得开心但不影响决策的对话。
-- 单次问答型的 prompt 调用 —— 属于具体项目的 issue 或文档。
-- 代码 review、debug 过程 —— 属于具体项目。
-- prompt 库或 system prompt 集合 —— 这些更适合独立的工具型 repo。
+- Conversations that were enjoyable but did not move a decision.
+- One-shot Q&A — those belong as issues or notes in the relevant project.
+- Code review, debugging, troubleshooting — those belong in the project itself.
+- Prompt libraries or system-prompt collections — those deserve their own tool-style repo.
 
-## 与其他 repo 的关系
+## Relationship to other repos
 
-`mithaq` 不取代任何项目 repo，它是元层。
+`mithaq` does not replace any project repo. It is the meta layer.
 
-- 每个其他 repo（roboharness、verse-driven、robowbc、LIP、docfit 等）可以在 `mithaq/vectors/<repo-name>.md` 维护一份**调研方向卡片**：该 repo 该盯哪些方向、信源黑白名单、调研节奏。
-- 周期性的 deep research checkpoint 用 `mithaq/templates/checkpoint.md` 作为骨架，per-repo 实例存在各自 repo 的 `docs/research-checkpoints/` 里（**不集中存在 mithaq**）。
-- 跨 repo 适用的反思（比如本 charter）留在 mithaq。
+- Each other repo (roboharness, verse-driven, robowbc, LIP, docfit, …) may maintain a **research-vectors card** at `mithaq/vectors/<repo-name>.md` defining which directions that repo must track, source whitelists/blacklists, and cadence.
+- Periodic deep-research checkpoints use `mithaq/templates/checkpoint.md` as their skeleton, but the resulting `YYYY-MM.md` instances live in each repo's own `docs/research-checkpoints/` directory — **not** in mithaq.
+- Reflections that apply across multiple repos (this charter, for instance) live in mithaq.
 
-简言之：**对话与元结构在 mithaq，落地与实现在各自 repo**。
+In one line: **conversations and meta-structure live in mithaq; their instantiation and implementation live in the respective repos**.
 
-## 状态
+## Status
 
-2026-05 启用，写完即过期 —— 实际跑起来之后这份 charter 会被修订。修订时不覆盖，在下面加日期标注的修订段落，保留判断的演化轨迹。
+Started 2026-05; expected to be revised the moment it is actually used. When revising, do not overwrite — append a dated revision section below, preserving the trace of how the judgment evolved.

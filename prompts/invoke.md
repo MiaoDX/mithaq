@@ -1,6 +1,6 @@
 # mithaq invoke prompt
 
-把下面虚线之间的全部内容粘给任意 repo 里工作的 agent。
+Copy everything between the dashed lines below and paste it to an agent working in any MiaoDX repo.
 
 ---
 
@@ -24,8 +24,8 @@ Begin by fetching the skill and confirming you have it loaded. Then ask which mo
 
 ---
 
-## 备注（不要复制这部分）
+## Notes (do not copy this part)
 
-- 一份通用 prompt 覆盖三种 mode。agent 加载 skill 后会反问"你要做哪种"，再具体进入。
-- 如果某天某种 mode 的触发足够频繁，要省掉"反问"那一步，再开专用 prompt（如 `run-checkpoint.md`）。
-- 这个 prompt 故意不重复 SKILL.md 已经说过的话——它只负责"把 agent 送到 skill 面前"。
+- A single universal prompt covering all three modes. After loading the skill, the agent asks "which mode?" and then proceeds.
+- If one specific mode (say, Mode A checkpoint) becomes frequent enough that saving the mode-selection turn matters, add a dedicated prompt like `run-checkpoint.md` later without breaking this one.
+- This prompt deliberately duplicates nothing from SKILL.md — it only "delivers the agent to the skill."

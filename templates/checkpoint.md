@@ -1,336 +1,335 @@
-# {{REPO_NAME}} 生态调研：{{YYYY-MM}} Checkpoint
+# {{REPO_NAME}} Ecosystem Research — {{YYYY-MM}} Checkpoint
 
-> 本文档是 `{{REPO_NAME}}` 项目对 {{周边生态/相关栈/相邻技术领域}} 的一次结构化调研存档。
+> A structured archive of `{{REPO_NAME}}`'s investigation into {{the surrounding ecosystem / relevant stack / adjacent technology domain}}.
 >
-> **当前 checkpoint 时间：** {{YYYY 年 M 月 D 日}}
-> **下次预定更新：** {{YYYY 年 M 月底 / 触发条件}}
-> **维护方式：** {{月度 / 双月 / 季度}} deep research + 人工 review，见 §0.2
+> **This checkpoint:** {{Month D, YYYY}}
+> **Next scheduled update:** {{end of Month YYYY / event-triggered}}
+> **Maintenance mode:** {{monthly / bi-monthly / quarterly}} deep research + human review (see §0.2)
 
 ---
 
-> **关于本模板**
+> **About this template**
 >
-> 本文件是 [`MiaoDX/mithaq`](https://github.com/MiaoDX/mithaq) 提供的 Layer 1 通用 checkpoint 骨架。
-> Per-repo 实例填入此模板，最终文件不放在 mithaq 仓库，而是放在各自 repo 的 `docs/research-checkpoints/YYYY-MM.md`。
+> This file is the Layer 1 universal checkpoint skeleton provided by [`MiaoDX/mithaq`](https://github.com/MiaoDX/mithaq). Per-repo instances fill in this template; the resulting `YYYY-MM.md` file lives in each consuming repo's `docs/research-checkpoints/`, **not** in mithaq.
 >
-> **配套使用：** 本 repo 在 `mithaq/vectors/<repo-name>.md` 维护一份调研方向卡片（Layer 2），定义"该盯哪些方向"。
-> 本模板是骨架（怎么写）；vectors 卡片是内容指引（写什么）。两者一起用才完整。
+> **Companion:** mithaq holds a research-vectors card at `mithaq/vectors/<repo-name>.md` (Layer 2) defining "what to track." This template is the skeleton ("how to write"); the vectors card is the substance ("what to write about"). Both are needed.
 >
-> 填模板时遵循三条原则：(1) 双花括号 `{{...}}` 是必须替换的占位符；(2) 引用块（`>`）是给填写者的说明，定稿前删掉；(3) 不适用的章节直接删除，不要保留空标题。
+> Three rules when filling in: (1) `{{...}}` markers are placeholders that must be replaced; (2) blockquote sections (`>`) are instructions to the author and should be deleted before publishing; (3) delete inapplicable sections entirely — do not leave empty headers.
 
 ---
 
-## 0. 关于本文档
+## 0. About this document
 
-### 0.1 为什么要做这个 checkpoint
+### 0.1 Why this checkpoint exists
 
-> 用 3-5 段写清楚：
-> - 这个 repo 的核心定位和约束是什么；
-> - 为什么"选型决定"在这个领域有保鲜期（生态变化的速度、关键变量等）；
-> - 这份 checkpoint 要做的两件事：冻结当前认知 + 建立可持续更新的机制。
+> Three to five paragraphs answering:
+> - What is this repo's core positioning and what are its constraints?
+> - Why does any "selection decision" in this domain have a short shelf life? (How fast is the ecosystem moving? What are the key variables?)
+> - The two jobs of this checkpoint: freezing the current understanding + establishing a sustainable update mechanism.
 
-{{为什么这个 repo 需要定期做生态盘点。包括：定位、约束、生态变化速度、不做盘点的代价。}}
+{{Why this repo needs a periodic ecosystem snapshot. Cover: positioning, constraints, rate of change in the ecosystem, cost of not snapshotting.}}
 
-### 0.2 更新方法
+### 0.2 Update method
 
-每次更新跑下面这套流程：
+Each update follows this loop:
 
-**步骤 1 — 增量调研**
+**Step 1 — incremental research**
 
-跑一组针对性的 deep research 查询，覆盖 vectors 卡片中定义的 {{N}} 个固定方向（见 [`mithaq/vectors/{{repo-name}}.md`](https://github.com/MiaoDX/mithaq/blob/main/vectors/{{repo-name}}.md)）：
+Run a targeted deep-research pass covering the {{N}} fixed directions defined in the vectors card (see [`mithaq/vectors/{{repo-name}}.md`](https://github.com/MiaoDX/mithaq/blob/main/vectors/{{repo-name}}.md)):
 
-1. {{方向 1}}
-2. {{方向 2}}
-3. {{方向 3}}
-4. ... (从 vectors 卡片复制；每次跑同一组，确保可对比)
+1. {{direction 1}}
+2. {{direction 2}}
+3. {{direction 3}}
+4. ... (copy from the vectors card; the same set every period for comparability)
 
-**步骤 2 — 增量整理**
+**Step 2 — incremental update**
 
-把调研结果对照上个 checkpoint，挑出 3 类需要更新的内容：
+Compare the research output against the previous checkpoint and produce three categories of update:
 
-- **新增项目 / 概念**：加到相应表格，标注 "(新增于 YYYY-MM)"。
-- **状态变化**：原条目发生显著变化（关键指标 ±30%、改名、停止维护、被收购、关键人物离开等），在原条目上加 `[YYYY-MM 更新]` 标注。
-- **判断修正**：如果新证据让某个建议不再成立，**不要删除原建议**，而是在下面加一段 `[YYYY-MM 修正]` 说明为什么改变。这样后续读 checkpoint 的人能看出"我们是怎么改变想法的"。
+- **New projects / concepts** — added to the relevant table with `(new in YYYY-MM)`.
+- **Status changes** — original entry undergoes a significant change (a key metric ±30%, rename, end of maintenance, acquisition, key person leaving). Add `[updated YYYY-MM]` to the original entry.
+- **Judgment revision** — if new evidence makes a prior recommendation no longer hold, **do not delete the prior recommendation**. Instead add a `[revised YYYY-MM]` block below it explaining why the judgment changed. This preserves the trail of how the thinking evolved.
 
-**步骤 3 — 写新 checkpoint**
+**Step 3 — write the new checkpoint**
 
-复制上个 checkpoint 作为模板，更新：
+Copy the prior checkpoint as a template; update:
 
-- 文件头的日期、下次更新日期；
-- §1 执行摘要 —— 重写，反映本期最重要的 3-5 个变化；
-- §3 / §4 / §5 / §6 各章节 —— 按步骤 2 的标注更新；
-- §7 公开问题 —— 勾掉本期已回答的，加上本期新发现的；
-- §8 变更日志 —— 新增一节 `## YYYY-MM-DD` 列出本次的所有变更。
+- File header date and next-update date;
+- §1 Executive summary — rewritten to reflect the 3-5 most important changes this period;
+- §3 / §4 / §5 / §6 sections — updated per Step 2 annotations;
+- §7 Open questions — strike through any resolved this period, add new ones discovered this period;
+- §8 Changelog — new section `## YYYY-MM-DD` listing all changes from this period.
 
-**步骤 4 — Review 与 commit**
+**Step 4 — review and commit**
 
-人工 review 整篇文档。重点检查：
+Manually review the whole document. Particularly check:
 
-- 有没有过度采信单一信源（特别是 SEO 内容站的判断）？
-- 有没有"这期没新东西所以照抄上期"的偷懒？
-- §6 的建议有没有跟 §3-§5 的证据脱节？
+- Did we over-rely on any single source (especially SEO content sites)?
+- Did we slack off by copy-pasting last period's content because "nothing changed this month"?
+- Are the recommendations in §6 disconnected from the evidence in §3-§5?
 
-review 通过后 commit 到 repo 的 `docs/research-checkpoints/` 目录。
+After review, commit to the consuming repo's `docs/research-checkpoints/` directory.
 
-**触发临时调研的条件（不等周期到）：**
+**Triggers for an off-schedule research pass (do not wait for the next cycle):**
 
-- {{触发条件 1，如"出现模型代际跃迁"——参考 vectors 卡片中定义的具体触发条件}}
-- {{触发条件 2}}
-- {{触发条件 3}}
+- {{trigger 1, e.g., "a model-generation jump occurred" — see the vectors card for specific triggers}}
+- {{trigger 2}}
+- {{trigger 3}}
 
-### 0.3 信源质量与可信度声明
+### 0.3 Source-quality declaration
 
-调研中遇到的信源大致分四档，引用时心里要分清：
+Sources encountered during research fall into four tiers, and the author must keep track of which tier they are citing:
 
-**A 档（一手、可信）**：项目官方 GitHub repo、官方 blog（Anthropic、OpenAI、HuggingFace 等大厂）、arXiv 论文、Linux Foundation 官方公告、维护者本人的技术博客。这些可以直接引用，但仍需验证发布时间 —— arXiv preprint 不等于已发表，官方 blog 可能反映的是公关角度。
+**A-tier (primary, trustworthy)**: project official GitHub repos, official blogs (Anthropic, OpenAI, NVIDIA, HuggingFace, Allen AI, and similar majors), arXiv papers, Linux Foundation official announcements, technical blogs maintained by named individuals (e.g., mitchellh.com). These can be cited directly, though publication date still needs verification — an arXiv preprint is not the same as a published paper; a company blog may reflect PR framing.
 
-**B 档（二手、需交叉验证）**：技术媒体（The Information、TechCrunch、TheNewStack、InfoQ、SecurityWeek、VentureBeat、量子位、机器之心等）、独立工程师的对比博文、HackerNews/Reddit/知乎讨论的高赞回答、产业咨询报告。这些通常方向对，但具体数字和时间线要核对一手信源。
+**B-tier (secondary, requires cross-verification)**: technical press (The Information, TechCrunch, TheNewStack, InfoQ, SecurityWeek, VentureBeat, 量子位, 机器之心), comparison posts by independent engineers, highly-upvoted HackerNews / Reddit / Zhihu answers, industry consulting reports. Direction usually correct, but specific numbers and timelines must be checked against primary sources.
 
-**C 档（聚合站、谨慎使用）**：awesome-* 列表、对比门户、生态地图。它们对**生态广度**的反映有用（"哦，原来还有这个项目"），但对**任何具体定量声明**（stars 数、市占率）都要按 ±20% 看待，且最好回到一手 repo 验证。
+**C-tier (aggregators, use with care)**: `awesome-*` lists, comparison portals, ecosystem maps. Useful for **breadth of discovery** ("oh, this project also exists") but **any specific quantitative claim** (stars, market share) should be treated as ±20% and verified at the upstream repo.
 
-**D 档（SEO / 内容营销，多数不引用）**：典型特征为"2026 年最佳 X 替代品"导购文章。它们的**结构化结论**（某种工具适合某种场景）有时有参考价值，但**具体声明**（性能数字、市场判断）几乎都是为 SEO 服务，**绝大多数情况下应该忽略**。如果某个判断只在 D 档信源里出现而无 A/B 档佐证，请在文档里标注 `[未充分验证]`。
+**D-tier (SEO / content marketing, mostly not cited)**: sites whose hallmark is "best X alternatives of 2026" SEO content. Their **structural conclusions** (which tool fits which scenario) sometimes have value, but their **specific claims** (performance numbers, market judgments) are almost entirely SEO copy and should be **ignored in nearly all cases**. If a judgment is supported only by a D-tier source with no A/B-tier corroboration, mark it `[INSUFFICIENT VERIFICATION]`.
 
-**本 repo 特定的信源黑白名单**：见 [`mithaq/vectors/{{repo-name}}.md`](https://github.com/MiaoDX/mithaq/blob/main/vectors/{{repo-name}}.md) 中的"信源"段落。
+**Repo-specific source whitelists and blacklists**: see the "Sources" section of [`mithaq/vectors/{{repo-name}}.md`](https://github.com/MiaoDX/mithaq/blob/main/vectors/{{repo-name}}.md).
 
-### 0.4 阅读指南
+### 0.4 How to read this
 
-文档可能比较长，按目的选择切入点：
+The document may be long. Use these entry points based on what you need:
 
-- **想快速了解结论**：读 §1 执行摘要 + §6 建议。
-- **想理解生态全貌**：读 §3。
-- **想做选型决策**：读 §6 + §7。
-- **想做下一次 checkpoint**：读 §0.2 + §8 变更日志 + §7 公开问题，知道下次该补什么。
+- **Quick conclusions only**: read §1 (executive summary) + §6 (recommendations).
+- **Understand the ecosystem panorama**: read §3.
+- **Make a selection decision**: read §6 + §7.
+- **Prepare the next checkpoint**: read §0.2 + §8 (changelog) + §7 (open questions) — this tells you what needs filling in.
 
 ---
 
-## 1. 执行摘要
+## 1. Executive summary
 
-> 3-5 个本期最重要的生态层面判断，每个 1-3 句话。
-> 如果是首期 checkpoint，写"建立基线"——列出当前对生态的整体理解。
-> 如果是后续期，重点写"和上期相比，哪些判断更新了"。
+> Three to five most important ecosystem-level judgments from this period, each 1-3 sentences.
+> First checkpoint: write "baseline established" and list the overall current understanding.
+> Subsequent checkpoints: emphasize "what changed vs. last period."
 
-**生态层面的 {{N}} 个判断：**
+**{{N}} ecosystem-level judgments:**
 
-1. {{判断 1}}
-2. {{判断 2}}
+1. {{judgment 1}}
+2. {{judgment 2}}
 3. ...
 
-**对 `{{REPO_NAME}}` 的具体建议：**
+**Specific recommendations for `{{REPO_NAME}}`:**
 
-1. {{建议 1}}
-2. {{建议 2}}
+1. {{recommendation 1}}
+2. {{recommendation 2}}
 3. ...
 
-**仍不确定、需要下次 checkpoint 验证的问题：**
+**Still uncertain, requires next checkpoint to verify:**
 
-- {{问题 1}}
-- {{问题 2}}
+- {{question 1}}
+- {{question 2}}
 
 ---
 
-## 2. 背景：{{REPO_NAME}} 现状与约束
+## 2. Background: {{REPO_NAME}} current state and constraints
 
-> 让本文档读起来不依赖外部上下文。下次 checkpoint 如果这些发生变化，先更新本节再写后面。
-> 内容包括：项目定位、当前栈、roadmap 阶段、已知技术约束。
+> So that this document reads without external context. If these change before the next checkpoint, update this section *first*.
+> Cover: project positioning, current stack, roadmap phase, known technical constraints.
 
-**项目定位**：{{一句话定义这个 repo 在做什么、为谁做、不做什么。}}
+**Project positioning**: {{one-sentence definition: what this repo does, for whom, and what it does not do.}}
 
-**当前栈（{{YYYY 年 M 月，仓库实际状态}}）**：
+**Current stack ({{Month YYYY, actual state of the repo}})**:
 
-- {{组件 1}}
-- {{组件 2}}
+- {{component 1}}
+- {{component 2}}
 - ...
 
-**Roadmap**：
+**Roadmap**:
 
-- **Phase 1**（{{已完成 / 进行中 / 计划}}）：{{...}}
-- **Phase 2**：{{...}}
-- **Phase 3**：{{...}}
+- **Phase 1** ({{done / in progress / planned}}): {{...}}
+- **Phase 2**: {{...}}
+- **Phase 3**: {{...}}
 
-**已知技术约束**：
+**Known technical constraints**:
 
-- {{约束 1，如主语言、license 限制、性能门槛等}}
-- {{约束 2}}
+- {{constraint 1, e.g., primary language, license restriction, performance threshold}}
+- {{constraint 2}}
 
-这些约束驱动了下面所有判断。
+These constraints drive every judgment below.
 
 ---
 
-## 3. 生态全景
+## 3. Ecosystem panorama
 
-> 这是 checkpoint 的主体之一。结构按本 repo 的实际情况组织——可能是"同类项目清单"、"上下游栈分层"、"分类法"等。
-> 关键要求：每个被提及的项目要有官方 repo 链接、最近活跃度的简要说明、与本 repo 的相关性判断。
-> 表格往往比段落更适合大量条目的对比。
+> Main body of the checkpoint. Structure by what fits this repo — could be "list of peer projects," "upstream-downstream stack layers," "taxonomy," etc.
+> Requirement: every project mentioned has an official repo link, a brief activity-level note, and an assessment of its relevance to this repo.
+> Tables are often better than paragraphs for many-entry comparisons.
 
-### 3.1 {{核心同类项目 / 直接竞品 / 同侪}}
+### 3.1 {{Core peer projects / direct competitors}}
 
-| 项目 | 维护者 | 关键指标 | 与本 repo 关系 |
-|------|--------|----------|----------------|
-| {{Project A}} | {{maintainer}} | {{stars / latest release / 用户量}} | {{相关性、值得参考的点}} |
+| Project | Maintainer | Key metric | Relevance to this repo |
+|---------|-----------|------------|------------------------|
+| {{Project A}} | {{maintainer}} | {{stars / latest release / users}} | {{relevance, points worth borrowing}} |
 | ... | | | |
 
-### 3.2 {{相邻项目 / 上下游栈}}
+### 3.2 {{Adjacent projects / upstream-downstream stack}}
 
-> 不是直接竞品但出现在同一生态里、可能影响本 repo 决策的项目。
+> Not direct competitors, but in the same ecosystem and may affect this repo's decisions.
 
 {{...}}
 
-### 3.3 {{本期浮现的稳定模式}}
+### 3.3 {{Stable patterns emerging this period}}
 
-> 从生态全貌中提炼出的、值得记下来的几个"模式"——其他项目都在这么做、可能本 repo 也该跟进或刻意不跟进。
+> Patterns distilled from the ecosystem panorama — things others are doing that this repo might follow, or deliberately not follow.
 
-- **{{模式 1}}**：{{描述 + 几个例子 + 与本 repo 的取舍}}
-- **{{模式 2}}**：{{...}}
+- **{{Pattern 1}}**: {{description + examples + trade-off for this repo}}
+- **{{Pattern 2}}**: {{...}}
 
 ---
 
-## 4. 分类法 / 视角（可选）
+## 4. Taxonomy / perspectives (optional)
 
-> 如果一个简单线性的清单不足以表达生态结构，本节用 2-4 个不同视角分别切一刀。
-> 例如：抽象层级 / 按职责 / 按部署形态 / 按用户类型。
-> 视角应当是正交的，互相不替代。
-> 如果本 repo 的生态不复杂，删掉本节。
+> If a simple linear list cannot express the ecosystem structure, use 2-4 perspectives that each cut the same domain differently.
+> Examples: by abstraction layer / by responsibility / by deployment shape / by user type.
+> Perspectives should be orthogonal, not replacements of each other.
+> If this repo's ecosystem is not that complex, delete this section.
 
-### 4.1 视角 I：{{...}}
-
-{{...}}
-
-### 4.2 视角 II：{{...}}
+### 4.1 Perspective I: {{...}}
 
 {{...}}
 
-### 4.3 多视角组合使用建议
+### 4.2 Perspective II: {{...}}
 
-{{什么时候用哪个视角，给读者一个 selection guide。}}
+{{...}}
+
+### 4.3 When to use which perspective
+
+{{Give the reader a selection guide.}}
 
 ---
 
-## 5. 学术与产业的现成分类法（可选）
+## 5. Existing academic and industry taxonomies (optional)
 
-> 如果有公认的学术综述或产业栈图可以参照，列在这里。
-> 不是必填——很多新兴领域没有现成分类。
+> If there are recognized academic surveys or industry stack maps to reference, list them here.
+> Not required — many emerging fields lack established taxonomies.
 
-### 5.1 学术综述
+### 5.1 Academic surveys
 
-- {{arXiv / Survey 1}}：{{简要点评}}
+- {{arXiv / survey 1}}: {{brief commentary}}
 
-### 5.2 产业栈图
+### 5.2 Industry stack maps
 
 - {{...}}
 
 ---
 
-## 6. 给 `{{REPO_NAME}}` 的具体建议
+## 6. Specific recommendations for `{{REPO_NAME}}`
 
-> §3-§5 的证据 → §6 的建议。两者之间要有清晰的论证链条。
-> 建议按"价值 / 实施成本"排序，并明确每条建议的当前状态（TODO / 进行中 / 已完成）。
+> Evidence in §3-§5 → recommendations in §6. The argumentative chain between them must be clear.
+> Order by "value / implementation cost." Mark each recommendation with current state (TODO / in progress / done).
 
-### 6.1 按 phase 的取舍（如有 phase 划分）
+### 6.1 Trade-offs by phase (if phases apply)
 
 {{...}}
 
-### 6.2 优先深读的项目
+### 6.2 Projects worth deep-reading first
 
-> 哪些项目值得花一两个小时认真读 README / 主要 source / 对比设计取舍。
+> Which projects deserve an hour or two of careful reading of README / main source / comparison of design trade-offs.
 
-1. {{Project X}} —— 理由：{{...}}
-2. {{Project Y}} —— 理由：{{...}}
+1. {{Project X}} — reason: {{...}}
+2. {{Project Y}} — reason: {{...}}
 
-### 6.3 工程上可以做的几件事
+### 6.3 Concrete engineering actions
 
-不分时间窗口。按"价值 / 实施成本"排序。
+Not bounded by time. Ordered by "value / implementation cost."
 
-| # | 工程动作 | 当前状态 | 价值 |
-|---|----------|----------|------|
-| 1 | {{动作}} | TODO / 进行中 / 已完成 | {{价值描述}} |
+| # | Action | Status | Value |
+|---|--------|--------|-------|
+| 1 | {{action}} | TODO / in progress / done | {{description of value}} |
 | 2 | ... | | |
 
 ---
 
-## 7. 公开问题与下次 checkpoint 该回答什么
+## 7. Open questions and what next checkpoint should answer
 
-下次 checkpoint 应优先回答这些。本期已经从 deep research 解决的，标 `[已解决于 YYYY-MM]` 并给出综合答案；新提出的问题用 `[新增于 YYYY-MM]` 标记。
+Next checkpoint should answer these first. Items already resolved by this period's deep research are marked `[resolved YYYY-MM]` with a synthesized answer; newly raised items are marked `[new in YYYY-MM]`.
 
-### 实验性问题（需要在本 repo 自己的代码里测才能回答）
+### Experimental questions (require running code in this repo to answer)
 
-- ☐ **Q1**：{{...}}
-- ☐ **Q2**：{{...}}
+- ☐ **Q1**: {{...}}
+- ☐ **Q2**: {{...}}
 
-### 技术选型问题
+### Technical selection questions
 
-- ☐ **Q3**：{{...}}
-- ✅ **Q4** [已解决于 YYYY-MM]：{{...}}
+- ☐ **Q3**: {{...}}
+- ✅ **Q4** [resolved YYYY-MM]: {{...}}
 
-### 生态跟踪问题
+### Ecosystem-tracking questions
 
-- ☐ **Q5**：{{...}}
+- ☐ **Q5**: {{...}}
 
-### 长期跟踪问题
+### Long-horizon tracking questions
 
-- ☐ **Q6**：{{...}}
+- ☐ **Q6**: {{...}}
 
-### 信源质量改进问题
+### Source-quality improvement questions
 
-- ☐ **Q7**：{{比如本期某项数据依赖 C/D 档信源，下次能否找一手数据？}}
+- ☐ **Q7**: {{e.g., this period some claim depended on a C/D-tier source; can we find primary data next time?}}
 
-### 本期新增
+### New this period
 
-- ☐ **Q8** [新增于 YYYY-MM]：{{...}}
-
----
-
-## 8. 变更日志
-
-### {{YYYY-MM-DD}} —— {{版本简述}}
-
-> 首期 checkpoint 写"建立基线"。后续期写"和上期相比的主要变化"。
-
-**架构叙事**：
-
-- {{...}}
-
-**新增项目**：
-
-- {{...}}
-
-**状态变化**：
-
-- {{...}}
-
-**判断修正**：
-
-- {{...}}
+- ☐ **Q8** [new in YYYY-MM]: {{...}}
 
 ---
 
-## 附录 A：完整参考链接
+## 8. Changelog
 
-> 所有在正文中引用的链接，分组列出。
-> 一手信源（官方 repo、官方 blog、arXiv）优先；C/D 档信源最好不出现在附录中。
+### {{YYYY-MM-DD}} — {{version note}}
 
-### A.1 {{分组 1，如"核心同类项目"}}
+> First checkpoint: write "baseline established."
+> Subsequent checkpoints: write "main changes vs. last period."
+
+**Architecture narrative**:
+
+- {{...}}
+
+**New projects**:
+
+- {{...}}
+
+**Status changes**:
+
+- {{...}}
+
+**Judgment revisions**:
+
+- {{...}}
+
+---
+
+## Appendix A: full reference links
+
+> All links cited in the body, grouped.
+> Prefer A-tier sources (official repos, official blogs, arXiv). C/D-tier sources should not appear in the appendix at all.
+
+### A.1 {{group 1, e.g., "core peer projects"}}
 
 - {{Project A}}: {{URL}}
 - ...
 
-### A.2 {{分组 2}}
+### A.2 {{group 2}}
 
 - {{...}}
 
 ---
 
-## 附录 B：术语表
+## Appendix B: glossary
 
-> 本 repo 特定的术语、缩写、自创标签。
-> 每期可继续扩充。
+> Terms, abbreviations, and self-coined labels specific to this repo.
+> Extend each period.
 
-| 术语 | 含义 |
-|------|------|
-| {{术语 1}} | {{含义}} |
-| {{术语 2}} | {{含义}} |
+| Term | Meaning |
+|------|---------|
+| {{Term 1}} | {{meaning}} |
+| {{Term 2}} | {{meaning}} |
 
 ---
 
-**文档结束。下次 checkpoint 计划时间：{{YYYY 年 M 月}}。**
+**End of document. Next checkpoint scheduled for {{Month YYYY}}.**
 
-按 §0.2 的步骤跑增量调研，重点关注 §7 列出的开放问题。
+Run the incremental-research loop per §0.2, paying particular attention to the open questions listed in §7.
