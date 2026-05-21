@@ -23,6 +23,7 @@ mithaq/
 ├── README.md          # 入口（你正在读的这个）
 ├── CHARTER.md         # 为什么取这个名字、为什么做这件事
 ├── skills/            # 给 AI agent 用的 SKILL.md（跨 repo 调用入口）
+├── prompts/           # 现成的 invoke prompt，可直接复制粘贴给 agent
 ├── templates/         # 可复用结构（如 checkpoint 元模板）
 ├── vectors/           # 每个其他 repo 的调研方向卡片（Layer 2）
 └── dialogues/         # 存档的关键对话
@@ -30,9 +31,11 @@ mithaq/
 
 ## 给 AI agent 用
 
-在任何 MiaoDX repo 里工作时，如果要跑 checkpoint、写 vectors 卡片、或存档 dialogue，让 agent 加载 [`skills/mithaq/SKILL.md`](./skills/mithaq/SKILL.md) —— 它是 SKILL.md 开放标准格式（Anthropic 2025-12 发布、Claude Code / Codex / Cursor 等多家支持），起 router 作用，告诉 agent 何时该用 mithaq、各种产物放在哪。
+在任何 MiaoDX repo 里工作时，如果要跑 checkpoint、写 vectors 卡片、或存档 dialogue：
 
-让 agent 看 raw URL：
+**最快路径**：打开 [`prompts/invoke.md`](./prompts/invoke.md)，把里面虚线之间的内容复制粘贴给 agent。
+
+**底层细节**：上面的 prompt 会让 agent 加载 [`skills/mithaq/SKILL.md`](./skills/mithaq/SKILL.md) —— 它是 SKILL.md 开放标准格式（Anthropic 2025-12 发布、Claude Code / Codex / Cursor 等多家支持），起 router 作用，告诉 agent 何时该用 mithaq、各种产物放在哪。也可以让 agent 直接 fetch raw URL：
 
 ```
 https://raw.githubusercontent.com/MiaoDX/mithaq/main/skills/mithaq/SKILL.md
