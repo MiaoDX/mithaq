@@ -10,7 +10,9 @@
 
 > "Visible robotics demos driven by VLM policies, OpenClaw, and AI coding agents."
 >
-> Core wedge: `open-ended goal → agent skill → MCP capability → simulation backend → reviewable HTML report`,
+> Core wedge: `open-ended goal → agent skill → composite action → semantic capability → environment primitive → execution backend`
+> (the canonical 6-layer abstraction ladder from `roboclaws/README.md` and `roboclaws/ARCHITECTURE.md`),
+> with reviewable HTML reports as the proof artifact derived from execution (not itself a layer),
 > with public/private evaluation truth separation as a first-class architectural concern.
 > Primary stack: AI2-THOR (navigation/territory/coverage) + MolmoSpaces & MuJoCo (cleanup/manipulation) +
 > MCP semantic profiles + multi-LLM providers (Anthropic / OpenAI / Kimi / MiMo / NVIDIA / Mock) +
@@ -116,7 +118,7 @@ Every checkpoint must answer: did this period produce evidence that any of the a
 **Entities to track**:
 
 - **Protocol mainline**: MCP (Anthropic / Linux Foundation AAIF since 2025-12; 2026-03-09 roadmap covering transport scalability, agent communication, governance, enterprise-readiness); A2A; ACP variants (IBM REST, arXiv:2602.15055 federated discovery + zero-trust DID, commercial ACP/UCP)
-- **Agent skill standards**: Anthropic Skills (agentskills.io, open standard published 2026-03-14, anthropics/skills); SKILL.md instances in robotics (roboclaws's own `skills/ai2thor-navigator/SKILL.md` and `skills/capture-object-photo/SKILL.md`); SOUL.md / MEMORY.md conventions; mitsuhiko/agent-stuff `skills/tmux/SKILL.md` as a reference tmux-skill
+- **Agent skill standards**: Anthropic Skills (agentskills.io, open standard published 2025-12-18, anthropics/skills); SKILL.md instances in robotics (roboclaws's own `skills/ai2thor-navigator/SKILL.md` and `skills/capture-object-photo/SKILL.md`); SOUL.md / MEMORY.md conventions; mitsuhiko/agent-stuff `skills/tmux/SKILL.md` as a reference tmux-skill
 - **Robotics MCP peers**: isaacsim-mcp (whats2000); ros-mcp-server (robotmcp); mujoco-mcp (if it appears); whether LeRobot ships an official MCP server
 - **Semantic profile peers**: any project shipping a similar "public canonical tool surface + privileged opt-in helpers + private evaluation truth excluded from metadata" pattern (roboclaws's `ai2thor_navigation_v1` / `molmospaces_cleanup_v1` / `real_robot_cleanup_v1`)
 - **Counter-evidence to H3**: any per-framework custom interface that demonstrably outperforms MCP+SKILL.md on a robotics benchmark
@@ -255,5 +257,6 @@ Any one of these triggers an ad-hoc deep research pass:
 ## Status
 
 - 2026-05-22: first written. Material drawn from `roboclaws/docs/research-checkpoints/2026-04.md` (1221 lines, v1+v2 published 2026-04-28/29), `roboclaws/README.md`, `roboclaws/ARCHITECTURE.md`, and `roboclaws/STATUS.md` (2026-05-19, real-robot Nav2 cleanup pilot on draft PR #112).
+- 2026-05-22 (post-write correction): two factual fixes against the first-written version. (a) Anthropic Skills open-standard publication date corrected from 2026-03-14 to 2025-12-18 (verified against TheNewStack 2025-12-18 coverage and Anthropic's anthropics/skills GitHub timeline). (b) Project-positioning abstraction ladder restored to the canonical 6-layer form from `roboclaws/README.md` and `roboclaws/ARCHITECTURE.md` (`goal → skill → composite action → semantic capability → environment primitive → execution backend`); the first-written 5-layer version conflated `composite action` with `semantic capability` and `environment primitive` with `execution backend`, and treated the HTML report as a layer rather than as a proof artifact derived from execution.
 - This card formalizes a vectors structure for a repo that already produced one large ad-hoc checkpoint. The first checkpoint written *under* this card (2026-05) should verify: (1) all 7 vectors produce useful, distinct output; (2) the 8 hidden assumptions each actually get challenged; (3) the 2026-04 → 2026-05 delta is visible across OpenClaw governance, MolmoSpaces multi-agent, Nav2 pilot status, and multi-agent-multi-robot precedent.
 - If two consecutive checkpoints leave all assumptions unchallenged, the vectors design has blind spots and needs revision. Entity lists are seeded from the 2026-04 checkpoint's Appendix A.1–A.12 plus current architecture state; the first monthly checkpoint should surface and add entities missed at card-writing time.
