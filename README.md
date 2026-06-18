@@ -11,7 +11,7 @@ A meta-repo doing two things:
 1. **Archive** — preserve the actually-decision-shaping conversations with Claude / GPT and other top models. One-shot, impulsive, forget-it-by-tomorrow exchanges do not enter. Only the ones that **changed a downstream decision**.
 2. **Direct** — extract reusable structures from those conversations (a universal periodic deep-research template, per-repo research-vectors cards, etc.) so other repos (roboharness, verse-driven, robowbc, LIP, docfit, …) can borrow them.
 
-No code, no draft documents, no prompt libraries — those belong elsewhere.
+No code, no draft documents, no general prompt libraries — those belong elsewhere. The only prompts here are thin invocation handoffs into the mithaq skill.
 
 ## The name
 
@@ -58,4 +58,4 @@ Or the consuming repo's `CLAUDE.md` / `AGENTS.md` can point at the skill once an
 
 ## Status
 
-Started 2026-05. The structure will evolve as it is actually used.
+Started 2026-05. Current contents: the Layer 1 checkpoint template, three vectors cards (`roboharness`, `robowbc`, `roboclaws`), and the first archived dialogue. The structure will evolve as it is actually used.

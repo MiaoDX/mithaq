@@ -12,7 +12,7 @@
 1. **存档** —— 把我和 Claude / GPT 等模型之间真正重要的、塑造判断的对话保留下来。一次性的、即兴的、聊完就忘的不收；只收那些**改变后续决策**的对话。
 2. **指引** —— 从这些对话里抽出可复用的结构（如周期性 deep research 的元模板、per-repo 的调研方向卡片），让我的其他 repo（roboharness、verse-driven、robowbc、LIP、docfit 等）能借力。
 
-不收录代码，不收录文档草稿，不收录 prompt 库——这些有专门的项目。
+不收录代码，不收录文档草稿，不收录通用 prompt 库——这些有专门的项目。这里的 `prompts/` 只放把 agent 引到 mithaq skill 的轻量调用入口。
 
 ## 名字
 
@@ -23,7 +23,9 @@
 ```
 mithaq/
 ├── README.md          # 入口（你正在读的这个）
+├── README.zh.md       # 中文入口
 ├── CHARTER.md         # 为什么取这个名字、为什么做这件事
+├── CHARTER.zh.md      # 中文 charter
 ├── skills/            # 给 AI agent 用的 SKILL.md（跨 repo 调用入口）
 ├── prompts/           # 现成的 invoke prompt，可直接复制粘贴给 agent
 ├── templates/         # 可复用结构（如 checkpoint 元模板）
@@ -47,4 +49,4 @@ https://raw.githubusercontent.com/MiaoDX/mithaq/main/skills/mithaq/SKILL.md
 
 ## 状态
 
-2026-05 启用。结构会随实际使用调整。
+2026-05 启用。当前内容：Layer 1 checkpoint 模板、三份 vectors 卡片（`roboharness`、`robowbc`、`roboclaws`）和第一份 dialogue 存档。结构会随实际使用调整。

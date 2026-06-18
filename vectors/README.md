@@ -33,6 +33,11 @@ At minimum:
 `<repo-short-name>.md`, e.g.:
 
 - `roboharness.md`
+- `robowbc.md`
+- `roboclaws.md`
+
+Planned or future examples:
+
 - `verse-driven.md`
 - `lip.md`
 
@@ -48,4 +53,10 @@ Rationale:
 
 ## Status
 
-Started 2026-05. **One card exists so far:** `roboharness.md`. It is also the reference implementation for the format — start there if you are writing the second card.
+Started 2026-05. Current cards:
+
+- `roboharness.md` — baseline reference implementation for the format.
+- `robowbc.md` — whole-body-control runtime vectors.
+- `roboclaws.md` — VLM robotics demo / multi-agent embodied AI vectors.
+
+Start from `roboharness.md` when writing a new card, then check the newer cards for examples of how to evolve assumptions and triggers as a repo's research surface becomes more specific.

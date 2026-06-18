@@ -216,11 +216,11 @@ Containing README, CHARTER (with the case for Mithaq, the case against alternati
 ## Follow-up actions
 
 - ☐ Write the WeChat essay "Why this repo is not named Primer" (first essay)
-- ☐ Lay down the first vectors card — `roboharness` (to validate whether the Layer 1 template actually works across scenarios)
+- ☑ Lay down the first vectors card — `roboharness` (to validate whether the Layer 1 template actually works across scenarios). Completed 2026-05-21; `robowbc` and `roboclaws` cards were added next.
 - ☐ Run the Layer 1 template against an actual repo (roboharness or verse-driven) for a first-period checkpoint, to validate usability
 - ☐ Follow-up essay candidates: the Aleph Alpha squat phenomenon / how Chinese AI mined out Cixin Liu's lexicon / Primer as "the perfect-but-unusable name"
 - ☐ Monitoring: if an AI startup named Mithaq appears in the next 12 months, re-evaluate
 
 ## Revisions
 
-(none yet)
+- 2026-06-18: Updated follow-up status for the vectors-card milestone; the archive now has three cards (`roboharness`, `robowbc`, `roboclaws`).

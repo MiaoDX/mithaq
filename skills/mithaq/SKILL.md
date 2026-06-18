@@ -66,7 +66,7 @@ Trigger: user wants to define (or revise) research direction tracking for a repo
 Steps:
 
 1. **Read `mithaq/vectors/README.md`** for the design rationale and what each card must contain.
-2. **Read `mithaq/vectors/roboharness.md`** as the reference implementation. It is the fullest example of the format.
+2. **Read `mithaq/vectors/roboharness.md`** as the baseline reference implementation. For richer evolved-card examples, also inspect `robowbc.md` or `roboclaws.md` when their domains are closer to the target repo.
 3. **For a new card**: clone the structure from roboharness.md, then customize:
    - Project positioning paragraph (one-sentence definition)
    - Hidden assumptions table (H1..HN) — these are the things this repo is implicitly betting on; the vectors are designed to challenge them. **A vectors card without hidden assumptions is incomplete** — it will produce "what's new in field X" research rather than "should we change our mind about Y" research.

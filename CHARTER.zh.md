@@ -64,7 +64,7 @@
 - 聊得开心但不影响决策的对话。
 - 单次问答型的 prompt 调用 —— 属于具体项目的 issue 或文档。
 - 代码 review、debug 过程 —— 属于具体项目。
-- prompt 库或 system prompt 集合 —— 这些更适合独立的工具型 repo。
+- prompt 库或 system prompt 集合 —— 这些更适合独立的工具型 repo。只负责把 agent 引到 mithaq skill 的轻量调用 prompt 可以保留在这里。
 
 ## 与其他 repo 的关系
 

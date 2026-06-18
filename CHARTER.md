@@ -64,7 +64,7 @@ To enter `dialogues/`, a conversation must satisfy at least two of these:
 - Conversations that were enjoyable but did not move a decision.
 - One-shot Q&A — those belong as issues or notes in the relevant project.
 - Code review, debugging, troubleshooting — those belong in the project itself.
-- Prompt libraries or system-prompt collections — those deserve their own tool-style repo.
+- Prompt libraries or system-prompt collections — those deserve their own tool-style repo. Thin invocation prompts that only route an agent into mithaq's skill are allowed.
 
 ## Relationship to other repos
 
