@@ -35,12 +35,21 @@ Each update follows this loop:
 
 **Step 1 — incremental research**
 
-Run a targeted deep-research pass covering the {{N}} fixed directions defined in the vectors card (see [`mithaq/vectors/{{repo-name}}.md`](https://github.com/MiaoDX/mithaq/blob/main/vectors/{{repo-name}}.md)):
+Run a targeted deep-research pass against the repo-specific tracking surface defined in the vectors card (see [`mithaq/vectors/{{repo-name}}.md`](https://github.com/MiaoDX/mithaq/blob/main/vectors/{{repo-name}}.md)). The vector set is stable across periods for comparability; the expansion depth is flexible:
 
-1. {{direction 1}}
-2. {{direction 2}}
-3. {{direction 3}}
-4. ... (copy from the vectors card; the same set every period for comparability)
+| Vector | Type | This period coverage | Reason |
+|--------|------|----------------------|--------|
+| {{V1 name}} | core / watch / trigger-only | full update / light check / no significant change / not triggered | {{why this depth is sufficient this period}} |
+| {{V2 name}} | core / watch / trigger-only | {{...}} | {{...}} |
+| {{V3 name}} | core / watch / trigger-only | {{...}} | {{...}} |
+
+Rules:
+
+- **Fixed tracking surface, flexible expansion depth**: every checkpoint checks the same vectors card; it does not invent a new set of directions for the period.
+- **Core vectors** receive a full update every routine checkpoint.
+- **Watch vectors** receive a light check every routine checkpoint and expand only when a trigger fires or material evidence appears.
+- **Trigger-only vectors** are listed in the coverage table but expand only when their explicit trigger fires.
+- Vector count, classification, and scope change only during vectors-card self-audit or an explicit card update, not ad hoc inside an ordinary checkpoint.
 
 **Step 2 — incremental update**
 

@@ -204,7 +204,11 @@ Every checkpoint must answer: did this period produce evidence that any of the a
 
 ## Cadence
 
-- **Routine checkpoint**: monthly, in the last week of the month. A single deep-research session covers all 6 vectors. Vectors 1 and 2 must be written every period; Vectors 3-6 may be marked "no significant change" rather than padded.
+- **Routine checkpoint**: monthly, in the last week of the month.
+- **Coverage policy**: fixed tracking surface, flexible expansion depth.
+  - **Core vectors**: Vectors 1 and 2 receive a full update every routine checkpoint.
+  - **Watch vectors**: Vectors 3-6 receive a light check every routine checkpoint and may be marked "no significant change" rather than padded if no material evidence appeared.
+  - **Tracking-surface changes**: vector count, classification, and scope change only during card self-audit or an explicit card update, not ad hoc inside an ordinary checkpoint.
 - **Card self-audit**: quarterly (after every 3 checkpoints), audit this vectors file itself — is the entity list stale? do the hidden assumptions need to be added to or pruned? has any platform / policy family / runtime been wrapped or wholly removed since last audit?
 
 ---

@@ -45,10 +45,14 @@ Trigger: user wants a periodic ecosystem snapshot for a specific repo.
 Steps:
 
 1. **Identify the target repo** (e.g., roboharness). Confirm with the user if ambiguous.
-2. **Read the vectors card** at `mithaq/vectors/<repo>.md`. This defines: which research directions to cover, which entities to track, source whitelist/blacklist, cadence, hidden assumptions to challenge, and triggers.
+2. **Read the vectors card** at `mithaq/vectors/<repo>.md`. This defines: which research vectors to track, each vector's coverage type (core / watch / trigger-only), which entities to track, source whitelist/blacklist, cadence, hidden assumptions to challenge, and triggers.
 3. **Read `mithaq/templates/checkpoint.md`** as the structural skeleton.
 4. **Read the previous checkpoint** at `<repo>/docs/research-checkpoints/<previous>.md` if any exists. This is the comparison anchor — new checkpoints note *what changed* against prior ones, they do not write from scratch.
-5. **Run deep research** covering each vector. For each entity in the vectors card, check for new releases/papers/announcements since the previous checkpoint.
+5. **Run deep research against the fixed tracking surface, with flexible expansion depth**:
+   - Core vectors: full update every routine checkpoint.
+   - Watch vectors: light check every routine checkpoint; expand only when material evidence appears.
+   - Trigger-only vectors: list in the coverage table; expand only when their explicit trigger fires.
+   - Do not invent a new set of directions for the period. Vector count, classification, and scope change only during vectors-card self-audit or an explicit card update.
 6. **Write the new checkpoint** at `<repo>/docs/research-checkpoints/YYYY-MM.md`, following the template structure. The most important sections are:
    - §1 Executive summary (3–5 most important changes this period)
    - §6 Recommendations (concrete actions for this repo)
@@ -70,7 +74,8 @@ Steps:
 3. **For a new card**: clone the structure from roboharness.md, then customize:
    - Project positioning paragraph (one-sentence definition)
    - Hidden assumptions table (H1..HN) — these are the things this repo is implicitly betting on; the vectors are designed to challenge them. **A vectors card without hidden assumptions is incomplete** — it will produce "what's new in field X" research rather than "should we change our mind about Y" research.
-   - 3–7 research vectors, each with concrete entity lists (no abstract placeholders like "key projects in this area" — list actual names)
+   - 3–8 research vectors, each with concrete entity lists (no abstract placeholders like "key projects in this area" — list actual names)
+   - Coverage policy: classify each vector as core, watch, or trigger-only. Small repos should not be padded to match larger repos; large repos should not be compressed into an arbitrary shared count.
    - Source whitelist (A-tier) and blacklist (D-tier) specific to this domain
    - Cadence (monthly / bi-monthly / quarterly / event-driven)
    - Triggers for off-schedule research
@@ -106,6 +111,7 @@ Output location: `mithaq/dialogues/YYYY-MM-DD-<slug>.md`.
 - **Writing checkpoint instances into mithaq**: they go into the *consuming repo*, never into mithaq.
 - **Generic vectors without entity lists**: "track major projects in agent harnesses" is not a vector; "track Anthropic engineering blog, OpenAI Symphony, Cursor planner/worker, HumanLayer, Martin Fowler" is. Specific entity names are non-negotiable.
 - **Vectors without hidden assumptions**: a card that only lists "what to read" without "what this repo is betting on" will produce shallow research forever.
+- **Ad hoc vector selection during checkpoints**: checkpoints may vary coverage depth, but they must use the vectors card's stable tracking surface. Reclassify or resize the surface in a card update, not inside a routine checkpoint.
 - **Verbatim dialogue dumps**: archive curated extracts with framing, not raw chat history. Discipline the volume — a dialogue archive is for re-reading, not for forensic completeness.
 - **Silent revision**: when a prior judgment is overruled, annotate with `[YYYY-MM 修正]` and keep the original visible. The audit trail is the point.
 - **Falling for SEO content**: D-tier sources (the "best AI tools of 2026" sites) almost never carry signal. If the only support for a claim is D-tier, mark it `[未充分验证]` and move on.

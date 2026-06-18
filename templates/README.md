@@ -22,7 +22,7 @@ Templates combine with per-repo vectors cards to produce actual checkpoints. The
 
 ### Creating a checkpoint
 
-1. **Read the vectors card** at `mithaq/vectors/<repo-name>.md` — defines research directions, entities, sources, cadence
+1. **Read the vectors card** at `mithaq/vectors/<repo-name>.md` — defines research vectors, coverage policy, entities, sources, cadence
 2. **Read this template** as the structural skeleton
 3. **Read the previous checkpoint** at `<repo>/docs/research-checkpoints/<previous>.md` for comparison
 4. **Fill in** using `{{...}}` placeholders; delete `>` instruction blocks before publishing

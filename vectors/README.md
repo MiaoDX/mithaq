@@ -19,14 +19,21 @@ Trying to compress these into a single set of generic prompts would make every r
 
 At minimum:
 
-1. **3-7 research directions**, each one specifying:
+1. **3-8 research vectors**, each one specifying:
    - The direction's name (e.g., "Agent SDK / harness-layer dynamics")
    - A concrete list of entities (people / projects / standards / paper series) — without specific entities, the prompt is asking the air
    - Expected major changes over the next year
-2. **Source whitelist** — which A-tier sites in this domain can be cited directly
-3. **Source blacklist** — which D-tier sites in this domain should be actively ignored
-4. **Cadence** — monthly / bi-monthly / quarterly / event-driven
-5. **Triggers for off-schedule research** — what events warrant breaking the cycle
+   - The hidden assumption(s) it challenges
+2. **Coverage policy** — fixed tracking surface, flexible expansion depth:
+   - **Core vectors**: full update every routine checkpoint
+   - **Watch vectors**: light check every routine checkpoint; full update only when material evidence appears
+   - **Trigger-only vectors**: listed for comparability but expanded only when an explicit trigger fires
+3. **Source whitelist** — which A-tier sites in this domain can be cited directly
+4. **Source blacklist** — which D-tier sites in this domain should be actively ignored
+5. **Cadence** — monthly / bi-monthly / quarterly / event-driven
+6. **Triggers for off-schedule research** — what events warrant breaking the cycle
+
+The number and classification of vectors are repo-specific. Small repos should not be padded to match larger repos; large, fast-moving repos should not be compressed into an arbitrary shared count. Adjust the tracking surface only during vectors-card self-audit or an explicit card update, not ad hoc inside an ordinary checkpoint.
 
 ## File naming
 
@@ -48,6 +55,7 @@ Vectors cards stay in mithaq; the actual periodic checkpoint files (`YYYY-MM.md`
 Rationale:
 
 - Vectors cards are metadata — they don't change every period. When they do, the change is a deliberate Layer 2 upgrade and gets its own commit.
+- A checkpoint may vary the depth of coverage for each vector, but it should not silently add, remove, or reclassify vectors.
 - Checkpoints are instance data — one per period, and they live alongside the code history of the repo they describe.
 - This way mithaq does not get flooded by every repo's monthly snapshots.
 
@@ -57,7 +65,7 @@ Started 2026-05. Current cards:
 
 | Card | Repo | Focus |
 |------|------|-------|
-| [`roboharness.md`](./roboclaws.md) | roboclaws | VLM robotics demo / multi-agent embodied AI |
+| [`roboclaws.md`](./roboclaws.md) | roboclaws | VLM robotics demo / multi-agent embodied AI |
 | [`robowbc.md`](./robowbc.md) | robowbc | Whole-body-control runtime |
 | [`roboharness.md`](./roboharness.md) | roboharness | Visual coding-agent harness |
 
