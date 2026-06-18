@@ -89,3 +89,9 @@ Platform exports have several problems:
 ## Status
 
 Started 2026-05. One archived dialogue so far: `2026-05-21-naming-mithaq.md` — also serves as the reference implementation for the format.
+
+## Related
+
+- [`../CHARTER.md`](../CHARTER.md) — Inclusion criteria for dialogues
+- [`../INDEX.md`](../INDEX.md) — Complete documentation index
+- [`../skills/mithaq/SKILL.md`](../skills/mithaq/SKILL.md) — AI agent routing logic for archiving

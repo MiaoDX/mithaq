@@ -11,3 +11,8 @@ Ready-to-paste invocation prompts for routing agents into the mithaq skill.
 These are thin routing prompts only. They carry no mithaq domain logic — that lives in `mithaq/skills/mithaq/SKILL.md`. A prompt just "delivers the agent to the skill."
 
 If a particular mode becomes frequent enough that a dedicated prompt saves a turn, new single-mode prompts (e.g., `run-checkpoint.md`) can be added here without breaking the universal one.
+
+## Related
+
+- [`../skills/mithaq/SKILL.md`](../skills/mithaq/SKILL.md) — The skill definition that prompts route into
+- [`../INDEX.md`](../INDEX.md) — Complete documentation index

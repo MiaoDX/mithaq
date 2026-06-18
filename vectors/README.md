@@ -55,8 +55,16 @@ Rationale:
 
 Started 2026-05. Current cards:
 
-- `roboharness.md` — baseline reference implementation for the format.
-- `robowbc.md` — whole-body-control runtime vectors.
-- `roboclaws.md` — VLM robotics demo / multi-agent embodied AI vectors.
+| Card | Repo | Focus |
+|------|------|-------|
+| [`roboharness.md`](./roboclaws.md) | roboclaws | VLM robotics demo / multi-agent embodied AI |
+| [`robowbc.md`](./robowbc.md) | robowbc | Whole-body-control runtime |
+| [`roboharness.md`](./roboharness.md) | roboharness | Visual coding-agent harness |
 
 Start from `roboharness.md` when writing a new card, then check the newer cards for examples of how to evolve assumptions and triggers as a repo's research surface becomes more specific.
+
+## Related
+
+- [`../templates/checkpoint.md`](../templates/checkpoint.md) — Layer 1 checkpoint skeleton
+- [`../INDEX.md`](../INDEX.md) — Complete documentation index
+- [`../skills/mithaq/SKILL.md`](../skills/mithaq/SKILL.md) — AI agent routing logic

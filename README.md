@@ -42,6 +42,10 @@ mithaq/
 └── dialogues/         # curated archive of important conversations
 ```
 
+## Documentation index
+
+For a complete overview of all documents and their purposes, see [`INDEX.md`](./INDEX.md).
+
 ## For AI agents
 
 When working inside any MiaoDX repo and the task involves mithaq's conventions (running an ecosystem checkpoint, writing a research-vectors card, archiving a dialogue):
